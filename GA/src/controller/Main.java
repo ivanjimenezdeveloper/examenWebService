@@ -26,7 +26,7 @@ public class Main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
-		
+		accidentesEjb.busquedaGeneral();
 		rs.forward(request, response);
 	}
 
