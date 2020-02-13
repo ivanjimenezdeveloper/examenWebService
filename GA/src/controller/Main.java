@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ejb.AkccidenteEJB;
+import model.ejb.AccidenteClienteEJB;
 
 @WebServlet("/Main")
 public class Main extends HttpServlet {
@@ -21,13 +21,12 @@ public class Main extends HttpServlet {
 	}
 
 	@EJB
-	AkccidenteEJB accidentesEjb;
+	AccidenteClienteEJB accidentesEjb;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
 		
-		accidentesEjb.busquedaGeneral();
 		rs.forward(request, response);
 	}
 

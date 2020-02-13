@@ -17,7 +17,7 @@ import model.entidad.Tipos;
 
 @Stateless(mappedName = "accidenteejotabe")
 @LocalBean
-public class AkccidenteEJB {
+public class AccidenteClienteEJB {
 
 	public ArrayList<Accidente> busquedaGeneral() {
 		Client cliente = ClientBuilder.newClient();
