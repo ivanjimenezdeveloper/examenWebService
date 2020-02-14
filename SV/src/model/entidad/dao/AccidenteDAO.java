@@ -11,7 +11,9 @@ import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Estadisticas;
 import model.entidad.Tipos;
+import model.entidad.Usuario;
 import model.entidad.dao.mapper.AccidentesMapper;
+import model.entidad.dao.mapper.UsuarioMapper;
 
 public class AccidenteDAO implements AccidentesMapper{
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(AccidenteDAO.class);
@@ -192,4 +194,33 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.close();
 		}
 	}
+	
+	public Usuario usuarioPorId(Integer id) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			UsuarioMapper usuarioMapper = sqlSession.getMapper(UsuarioMapper.class);
+			return usuarioMapper.usuarioPorId(id);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			Usuario t = new Usuario();
+			return t;
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Usuario getUsuario(String nombre, String pass) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			UsuarioMapper usuarioMapper = sqlSession.getMapper(UsuarioMapper.class);
+			return usuarioMapper.getUsuario(nombre, pass);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			Usuario t = new Usuario();
+			return t;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
 }

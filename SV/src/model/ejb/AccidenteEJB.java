@@ -9,6 +9,7 @@ import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Estadisticas;
 import model.entidad.Tipos;
+import model.entidad.Usuario;
 import model.entidad.dao.AccidenteDAO;
 
 @Stateless
@@ -125,5 +126,19 @@ public class AccidenteEJB {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.busquedaGeneralTipos();
+	}
+	
+	public Usuario usuarioPorId(Integer id) {
+		AccidenteDAO a = new AccidenteDAO();
+		
+		
+		return a.usuarioPorId(id);
+	}
+	
+	public Usuario getUsuario(String nombre, String pass) {
+		AccidenteDAO a = new AccidenteDAO();
+		
+		
+		return a.getUsuario(nombre, pass);
 	}
 }

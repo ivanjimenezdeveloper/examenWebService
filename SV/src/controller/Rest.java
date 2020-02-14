@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -12,9 +15,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import model.ejb.AccidenteEJB;
+import model.ejb.SesionEJB;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Tipos;
+import model.entidad.Usuario;
 
 @Path("Accidente")
 public class Rest {
@@ -23,8 +28,9 @@ public class Rest {
 	HttpServletRequest request;
 	@EJB
 	AccidenteEJB accidenteEJB;
-	
-	
+	@EJB
+	SesionEJB sesionEJB;
+
 	@GET
 	@Path("/getAccidente/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -36,7 +42,7 @@ public class Rest {
 		return a;
 
 	}
-	
+
 	@GET
 	@Path("/getAccidentes/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -48,7 +54,7 @@ public class Rest {
 		return a;
 
 	}
-	
+
 	@GET
 	@Path("/getDistritos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -60,7 +66,7 @@ public class Rest {
 		return a;
 
 	}
-	
+
 	@GET
 	@Path("/getTipos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -72,5 +78,34 @@ public class Rest {
 		return a;
 
 	}
-	
-}
+
+	@POST
+	@Path("/logearUsuario/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Integer logeaUsuario(Usuario a) {
+		HttpSession sesion = request.getSession(true);
+
+		Usuario u = sesionEJB.usuarioLogeado(sesion);
+
+		//si el usuario es nulo procedera a hacer login
+		if (u == null) {
+			//comprueba que exista el usuario
+			 u = accidenteEJB.getUsuario(a.getNombre(), a.getPass());
+
+			if(u.getId() != null) {
+				
+				sesionEJB.loginUsuario(sesion, u);
+				
+				
+				return 1;
+			}else {
+				return 0;
+			}
+
+
+	}else {
+		return 0;
+	}
+
+}}

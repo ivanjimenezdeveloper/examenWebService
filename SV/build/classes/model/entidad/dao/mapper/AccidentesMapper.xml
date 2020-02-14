@@ -59,8 +59,10 @@
 	<select id="busquedaAccidente" resultMap="AccidenteResult">
 		SELECT ACCIDENTES.*
 		FROM ACCIDENTES, TIPOS_ACCIDENTE WHERE
-		TIPOS_ACCIDENTE.NOMBRE LIKE #{tipo} AND ACCIDENTES.FECHA &lt; #{fecha} AND
-		TIPOS_ACCIDENTE.ID = ACCIDENTES.ID_TIPO_ACCIDENTE
+		TIPOS_ACCIDENTE.NOMBRE LIKE
+		#{tipo} AND ACCIDENTES.FECHA &lt; #{fecha} AND
+		TIPOS_ACCIDENTE.ID =
+		ACCIDENTES.ID_TIPO_ACCIDENTE
 	</select>
 
 	<select id="busquedaAccidenteDespues"
@@ -73,10 +75,19 @@
 	</select>
 
 	<select id="busquedaGeneralDistritos" resultType="Distrito">
-		SELECT * FROM DISTRITOS
+		SELECT * FROM
+		DISTRITOS
 	</select>
-		<select id="busquedaGeneralTipos" resultType="Tipos">
-		SELECT * FROM TIPOS_ACCIDENTE
+	<select id="busquedaGeneralTipos" resultType="Tipos">
+		SELECT * FROM
+		TIPOS_ACCIDENTE
 	</select>
 
+	<select id="usuarioPorId" resultType="Usuario">
+		SELECT * FROM USUARIO WHERE ID = #{id}
+	</select>
+	
+	<select id="getUsuario" resultType="Usuario">
+	SELECT * FROM USUARIO WHERE NOMBRE = #{nombre} AND PASS = #{pass};
+	</select>
 </mapper>

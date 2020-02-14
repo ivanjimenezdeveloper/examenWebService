@@ -6,6 +6,7 @@
 		<typeAlias type='model.entidad.Accidente' alias='Accidente'></typeAlias>
 		<typeAlias type='model.entidad.Tipos' alias='Tipos'></typeAlias>
 		<typeAlias type='model.entidad.Distritos' alias='Distrito'></typeAlias>
+		<typeAlias type='model.entidad.Usuario' alias='Usuario'></typeAlias>
 
 
 		<typeAlias type='model.entidad.Estadisticas' alias='Est'></typeAlias>
@@ -25,7 +26,5 @@
 	<mappers>
 		<mapper
 			resource='model/entidad/dao/mapper/AccidentesMapper.xml' />
-
-
 	</mappers>
 </configuration>
