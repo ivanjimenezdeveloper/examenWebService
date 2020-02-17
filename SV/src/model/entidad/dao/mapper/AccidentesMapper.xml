@@ -45,17 +45,36 @@
 
 	<select id="getEstadisticas" resultType="Est">
 		SELECT DISTRITOS.NOMBRE
-		as distrito, COUNT(TIPOS_ACCIDENTE.NOMBRE) as
+		as Distrito, COUNT(TIPOS_ACCIDENTE.NOMBRE) as
 		cantidad,
 		TIPOS_ACCIDENTE.NOMBRE as tipo
 		FROM ACCIDENTES, TIPOS_ACCIDENTE,
 		DISTRITOS
-		WHERE ID_DISTRITO = DISTRITOS.ID AND ID_TIPO_ACCIDENTE =
-		TIPOS_ACCIDENTE.ID
-		group by DISTRITOS.NOMBRE, TIPOS_ACCIDENTE.NOMBRE
-		order by cantidad desc
+		WHERE ID_DISTRITO = DISTRITOS.ID
+		AND ID_TIPO_ACCIDENTE =
+		TIPOS_ACCIDENTE.ID AND ACCIDENTES.FECHA &lt;
+		#{fin} AND
+		ACCIDENTES.FECHA &gt; #{inicio}
+		group by DISTRITOS.NOMBRE,
+		TIPOS_ACCIDENTE.NOMBRE
+		order by DISTRITOS.NOMBRE desc,
+		TIPOS_ACCIDENTE.NOMBRE DESC
 	</select>
-
+	<select id="getEstadisticasSexo" resultType="Est">
+		SELECT DISTRITOS.NOMBRE as Distrito, COUNT(TIPOS_ACCIDENTE.NOMBRE) as
+		cantidad,
+		TIPOS_ACCIDENTE.NOMBRE as tipo,
+		TIPOS_SEXO.NOMBRE as sexo,
+		TIPOS_VEHICULO.NOMBRE as vehiculo
+		FROM ACCIDENTES, TIPOS_ACCIDENTE, DISTRITOS, TIPOS_SEXO, TIPOS_VEHICULO
+		WHERE ID_DISTRITO = DISTRITOS.ID AND TIPOS_SEXO.ID =
+		ACCIDENTES.ID_SEXO AND TIPOS_VEHICULO.ID = ACCIDENTES.ID_TIPO_VEHICULO
+		AND ID_TIPO_ACCIDENTE = TIPOS_ACCIDENTE.ID AND ACCIDENTES.FECHA &lt;
+		#{fin} AND ACCIDENTES.FECHA &gt; #{inicio} and DISTRITOS.NOMBRE
+		= #{distrito}
+		group by DISTRITOS.NOMBRE, TIPOS_ACCIDENTE.NOMBRE, sexo, vehiculo
+		order by sexo desc, vehiculo DESC;
+	</select>
 	<select id="busquedaAccidente" resultMap="AccidenteResult">
 		SELECT ACCIDENTES.*
 		FROM ACCIDENTES, TIPOS_ACCIDENTE WHERE
@@ -83,11 +102,5 @@
 		TIPOS_ACCIDENTE
 	</select>
 
-	<select id="usuarioPorId" resultType="Usuario">
-		SELECT * FROM USUARIO WHERE ID = #{id}
-	</select>
-	
-	<select id="getUsuario" resultType="Usuario">
-	SELECT * FROM USUARIO WHERE NOMBRE = #{nombre} AND PASS = #{pass};
-	</select>
+
 </mapper>

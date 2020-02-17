@@ -95,7 +95,7 @@ public class Rest {
 
 			if(u.getId() != null) {
 				
-				sesionEJB.loginUsuario(sesion, u);
+				//sesionEJB.loginUsuario(sesion, u);
 				
 				
 				return 1;
@@ -108,4 +108,7 @@ public class Rest {
 		return 0;
 	}
 
-}}
+}
+	
+	
+	}

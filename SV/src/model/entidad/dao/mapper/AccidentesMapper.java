@@ -19,12 +19,14 @@ public interface AccidentesMapper {
 
 	public Distritos distritoPorId(@Param("id") int id);
 
-	public ArrayList<Estadisticas> getEstadisticas();
+	public ArrayList<Estadisticas> getEstadisticas(@Param("inicio") String inicio, @Param("fin") String fin);
+	
+	public ArrayList<Estadisticas> getEstadisticasSexo(@Param("inicio") String inicio, @Param("fin") String fin, @Param("distrito") String distrito);
+
 
 	public ArrayList<Accidente> busquedaAccidente(@Param("tipo") String tipo, @Param("fecha") String fecha);
 
 	public ArrayList<Accidente> busquedaAccidenteDespues(@Param("tipo") String tipo, @Param("fecha") String fecha);
-
 
 	public ArrayList<Distritos> busquedaGeneralDistritos();
 

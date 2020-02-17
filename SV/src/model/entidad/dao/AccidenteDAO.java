@@ -101,11 +101,11 @@ public class AccidenteDAO implements AccidentesMapper{
 	 * @return Arraylist con todas las estadisticas
 	 */
 	@Override
-	public ArrayList<Estadisticas> getEstadisticas() {
+	public ArrayList<Estadisticas> getEstadisticas(String inicio, String fin) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
 			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
-			return accidenteMapper.getEstadisticas();
+			return accidenteMapper.getEstadisticas(inicio, fin);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			ArrayList<Estadisticas> uArr = new ArrayList<Estadisticas>();
@@ -218,6 +218,21 @@ public class AccidenteDAO implements AccidentesMapper{
 			logger.error(e.getMessage());
 			Usuario t = new Usuario();
 			return t;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			return accidenteMapper.getEstadisticasSexo(inicio, fin, distrito);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ArrayList<Estadisticas> uArr = new ArrayList<Estadisticas>();
+			return uArr;
 		} finally {
 			sqlSession.close();
 		}

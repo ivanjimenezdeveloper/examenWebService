@@ -26,5 +26,8 @@
 	<mappers>
 		<mapper
 			resource='model/entidad/dao/mapper/AccidentesMapper.xml' />
+
+		<mapper
+			resource='model/entidad/dao/mapper/UsuarioMapper.xml' />
 	</mappers>
 </configuration>

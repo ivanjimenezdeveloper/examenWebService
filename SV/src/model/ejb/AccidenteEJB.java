@@ -16,6 +16,7 @@ import model.entidad.dao.AccidenteDAO;
 @LocalBean
 /**
  * EJB que lleva la logica de negocio sobre los accidentes
+ * 
  * @author HIBAN
  *
  */
@@ -23,6 +24,7 @@ public class AccidenteEJB {
 
 	/**
 	 * Busqueda de todos los accidentes
+	 * 
 	 * @return ArrayList con los accidentes
 	 */
 	public ArrayList<Accidente> busquedaGeneral() {
@@ -34,7 +36,8 @@ public class AccidenteEJB {
 
 	/**
 	 * Busca los accidentes segun el tipo y fecha
-	 * @param tipo tipo de accidente
+	 * 
+	 * @param tipo  tipo de accidente
 	 * @param fecha fecha inicial
 	 * @return ArrayList de accidentes
 	 */
@@ -44,10 +47,11 @@ public class AccidenteEJB {
 		return a.busquedaAccidente(tipo, fecha);
 
 	}
-	
+
 	/**
 	 * Busqueda de accidentes despues de la fecha dada
-	 * @param tipo tipo de accidente
+	 * 
+	 * @param tipo  tipo de accidente
 	 * @param fecha fecha inicial
 	 * @return Arraylist de accidentes
 	 */
@@ -60,6 +64,7 @@ public class AccidenteEJB {
 
 	/**
 	 * Busqueda de tipo por id
+	 * 
 	 * @param id id del tipo de accidente
 	 * @return Objeto de tipos
 	 */
@@ -72,6 +77,7 @@ public class AccidenteEJB {
 
 	/**
 	 * Conseguir un accidente por id
+	 * 
 	 * @param id id del accidente
 	 * @return objeto accidente
 	 */
@@ -84,6 +90,7 @@ public class AccidenteEJB {
 
 	/**
 	 * Consigue un distrito por id
+	 * 
 	 * @param id id del distrito
 	 * @return objeto distrito
 	 */
@@ -96,19 +103,26 @@ public class AccidenteEJB {
 
 	/**
 	 * Devuelve todas las estadisticas
+	 * 
 	 * @return Arraylist con todas las estadisticas
 	 */
-	public ArrayList<Estadisticas> getEstadisticas() {
+	public ArrayList<Estadisticas> getEstadisticas(String inicio, String fin) {
 		AccidenteDAO a = new AccidenteDAO();
 
-		return a.getEstadisticas();
+		return a.getEstadisticas(inicio, fin);
+
+	}
+	
+	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
+		AccidenteDAO a = new AccidenteDAO();
+
+		return a.getEstadisticasSexo(inicio, fin,distrito);
 
 	}
 
-
-
 	/**
 	 * Devuelve todos los distritos
+	 * 
 	 * @return ArrayList de Distritos
 	 */
 	public ArrayList<Distritos> busquedaGeneralDistritos() {
@@ -119,6 +133,7 @@ public class AccidenteEJB {
 
 	/**
 	 * Devuelve todos los tipos de accidentes
+	 * 
 	 * @return ArrayList de tipos de accidentes
 	 */
 
@@ -127,18 +142,16 @@ public class AccidenteEJB {
 
 		return a.busquedaGeneralTipos();
 	}
-	
+
 	public Usuario usuarioPorId(Integer id) {
 		AccidenteDAO a = new AccidenteDAO();
-		
-		
+
 		return a.usuarioPorId(id);
 	}
-	
+
 	public Usuario getUsuario(String nombre, String pass) {
 		AccidenteDAO a = new AccidenteDAO();
-		
-		
+
 		return a.getUsuario(nombre, pass);
 	}
 }
