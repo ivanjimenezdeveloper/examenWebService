@@ -13,7 +13,7 @@
 		<result property='sexo' column='SEXO' />
 		<result property='lesividad' column='LESIVIDAD' />
 		<result property='fecha' column='FECHA' />
-		<result property="hora" column="HORA"/>
+		<result property="hora" column="HORA" />
 		<result property='expediente' column='EXPEDIENTE' />
 
 
@@ -62,19 +62,27 @@
 		TIPOS_ACCIDENTE.NOMBRE DESC
 	</select>
 	<select id="getEstadisticasSexo" resultType="Est">
-		SELECT DISTRITOS.NOMBRE as Distrito, COUNT(TIPOS_ACCIDENTE.NOMBRE) as
+		SELECT
+		DISTRITOS.NOMBRE as Distrito, COUNT(TIPOS_ACCIDENTE.NOMBRE) as
 		cantidad,
 		TIPOS_ACCIDENTE.NOMBRE as tipo,
 		TIPOS_SEXO.NOMBRE as sexo,
 		TIPOS_VEHICULO.NOMBRE as vehiculo
-		FROM ACCIDENTES, TIPOS_ACCIDENTE, DISTRITOS, TIPOS_SEXO, TIPOS_VEHICULO
-		WHERE ID_DISTRITO = DISTRITOS.ID AND TIPOS_SEXO.ID =
-		ACCIDENTES.ID_SEXO AND TIPOS_VEHICULO.ID = ACCIDENTES.ID_TIPO_VEHICULO
-		AND ID_TIPO_ACCIDENTE = TIPOS_ACCIDENTE.ID AND ACCIDENTES.FECHA &lt;
-		#{fin} AND ACCIDENTES.FECHA &gt; #{inicio} and DISTRITOS.NOMBRE
+		FROM ACCIDENTES, TIPOS_ACCIDENTE,
+		DISTRITOS, TIPOS_SEXO, TIPOS_VEHICULO
+		WHERE ID_DISTRITO = DISTRITOS.ID
+		AND TIPOS_SEXO.ID =
+		ACCIDENTES.ID_SEXO AND TIPOS_VEHICULO.ID =
+		ACCIDENTES.ID_TIPO_VEHICULO
+		AND ID_TIPO_ACCIDENTE = TIPOS_ACCIDENTE.ID
+		AND ACCIDENTES.FECHA &lt;
+		#{fin} AND ACCIDENTES.FECHA &gt; #{inicio}
+		and DISTRITOS.NOMBRE
 		= #{distrito}
-		group by DISTRITOS.NOMBRE, TIPOS_ACCIDENTE.NOMBRE, sexo, vehiculo
-		order by sexo desc, vehiculo DESC;
+		group by DISTRITOS.NOMBRE,
+		TIPOS_ACCIDENTE.NOMBRE, sexo, vehiculo
+		order by sexo desc, vehiculo
+		DESC;
 	</select>
 	<select id="busquedaAccidente" resultMap="AccidenteResult">
 		SELECT ACCIDENTES.*
@@ -102,6 +110,18 @@
 		SELECT * FROM
 		TIPOS_ACCIDENTE
 	</select>
+
+	<select id="getSexos" resultType="Sexo">
+		SELECT * FROM TIPOS_SEXO
+	</select>
+<!-- 	<insert id="insertAccidente" resultMap="AccidenteResult"> -->
+<!-- 		INSERT INTO -->
+<!-- 		ACCIDENTES(EXPEDIENTE, FECHA, HORA, DIRECCION, ID_DISTRITO, -->
+<!-- 		ID_TIPO_ACCIDENTE, ID_TIPO_VEHICULO, ID_SEXO ) -->
+<!-- 		VALUES(#{expediente}, -->
+<!-- 		#{fecha}, #{hora}, #{direccion}, #{idDistrito} , #{idAccidente} -->
+<!-- 		,#{idVehiculo}, #{idSexo}); -->
+<!-- 	</insert> -->
 
 
 </mapper>

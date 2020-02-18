@@ -23,7 +23,8 @@ import model.entidad.Tipos;
 @WebServlet("/CrearAccidentes")
 public class CrearAccidentes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
+
 	@EJB
 	AccidenteClienteEJB accidentesEjb;
     public CrearAccidentes() {
@@ -35,6 +36,8 @@ public class CrearAccidentes extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
+
 		HttpSession sesion = request.getSession(true);
 		ArrayList<Tipos> arr = accidentesEjb.getTipos();
 		ArrayList<Distritos> arrD = accidentesEjb.busquedaGeneralDistritos();

@@ -24,6 +24,7 @@ public class MostrarAccidentes extends HttpServlet {
 
 	@EJB
 	AccidenteClienteEJB accidentesEjb;
+	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -31,6 +32,8 @@ public class MostrarAccidentes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
+
 		HttpSession sesion = request.getSession(true);
 		ArrayList<Accidente> arr = accidentesEjb.busquedaGeneral();
 		sesion.setAttribute("accidentes",arr );

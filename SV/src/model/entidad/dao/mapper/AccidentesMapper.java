@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Estadisticas;
+import model.entidad.Sexo;
 import model.entidad.Tipos;
 
 public interface AccidentesMapper {
@@ -31,5 +32,7 @@ public interface AccidentesMapper {
 	public ArrayList<Distritos> busquedaGeneralDistritos();
 
 	public ArrayList<Tipos> busquedaGeneralTipos();
+	
+	public ArrayList<Sexo> getSexos();
 
 }

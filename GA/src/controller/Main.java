@@ -19,12 +19,15 @@ public class Main extends HttpServlet {
 	public Main() {
 		super();
 	}
+	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 
 	@EJB
 	AccidenteClienteEJB accidentesEjb;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
+
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/main.jsp");
 		rs.forward(request, response);
 	}

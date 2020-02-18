@@ -10,6 +10,7 @@ import model.MyBatisUtil;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Estadisticas;
+import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
 import model.entidad.dao.mapper.AccidentesMapper;
@@ -232,6 +233,21 @@ public class AccidenteDAO implements AccidentesMapper{
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			ArrayList<Estadisticas> uArr = new ArrayList<Estadisticas>();
+			return uArr;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public ArrayList<Sexo> getSexos() {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			return accidenteMapper.getSexos();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ArrayList<Sexo> uArr = new ArrayList<Sexo>();
 			return uArr;
 		} finally {
 			sqlSession.close();

@@ -18,6 +18,7 @@ import model.ejb.AccidenteEJB;
 import model.ejb.SesionEJB;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
+import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
 
@@ -62,6 +63,18 @@ public class Rest {
 		ArrayList<Distritos> a = new ArrayList<Distritos>();
 
 		a = accidenteEJB.busquedaGeneralDistritos();
+
+		return a;
+
+	}
+	
+	@GET
+	@Path("/getSexos/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Sexo> getSexos() {
+		ArrayList<Sexo> a = new ArrayList<Sexo>();
+
+		a = accidenteEJB.getSexos();
 
 		return a;
 

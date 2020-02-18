@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import org.apache.ibatis.session.SqlSession;
+
+import model.MyBatisUtil;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Estadisticas;
+import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
 import model.entidad.dao.AccidenteDAO;
+import model.entidad.dao.mapper.AccidentesMapper;
 
 @Stateless
 @LocalBean
@@ -112,11 +117,11 @@ public class AccidenteEJB {
 		return a.getEstadisticas(inicio, fin);
 
 	}
-	
+
 	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
 		AccidenteDAO a = new AccidenteDAO();
 
-		return a.getEstadisticasSexo(inicio, fin,distrito);
+		return a.getEstadisticasSexo(inicio, fin, distrito);
 
 	}
 
@@ -154,4 +159,11 @@ public class AccidenteEJB {
 
 		return a.getUsuario(nombre, pass);
 	}
+
+	public ArrayList<Sexo> getSexos() {
+		AccidenteDAO a = new AccidenteDAO();
+
+		return a.getSexos();
+	}
+
 }

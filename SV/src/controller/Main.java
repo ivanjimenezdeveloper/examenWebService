@@ -19,12 +19,13 @@ import model.ejb.AccidenteEJB;
 @WebServlet("/Main")
 public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 	@EJB
 	AccidenteEJB accidenteEJB;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
 		String eleccion = request.getParameter("e");
 		HttpSession sesion = request.getSession(true);
 
@@ -49,6 +50,7 @@ public class Main extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType(CONTENT_TYPE);
 
 		HttpSession sesion = request.getSession(true);
 		String eleccion = (String) sesion.getAttribute("eleccion");
