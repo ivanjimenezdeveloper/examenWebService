@@ -1,18 +1,15 @@
 package model.entidad;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
+
 @XmlRootElement
 public class Accidente {
-	private Integer id,id_distrito,id_tipo_accidente;
+	private Integer id, id_distrito, id_tipo_accidente;
 	private String expediente, direccion, tipo_vehiculo, tipo_persona, sexo, lesividad;
-	private Date fecha;
-	
-
+	private String fecha, hora;
 
 	public Accidente(Integer id, Integer id_distrito, Integer id_tipo_accidente, String expediente, String direccion,
-			String tipo_vehiculo, String tipo_persona, String sexo, String lesividad, Date fecha) {
+			String tipo_vehiculo, String tipo_persona, String sexo, String lesividad, String fecha, String hora) {
 		super();
 		this.id = id;
 		this.id_distrito = id_distrito;
@@ -24,11 +21,14 @@ public class Accidente {
 		this.sexo = sexo;
 		this.lesividad = lesividad;
 		this.fecha = fecha;
+		this.hora = hora;
 	}
+	
 
 	public Accidente() {
 		super();
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -102,14 +102,20 @@ public class Accidente {
 		this.lesividad = lesividad;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
-	
-	
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
 }

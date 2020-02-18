@@ -25,7 +25,7 @@ public class Main extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
+		RequestDispatcher rs = getServletContext().getRequestDispatcher("/main.jsp");
 		rs.forward(request, response);
 	}
 

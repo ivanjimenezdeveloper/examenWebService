@@ -13,6 +13,7 @@
 		<result property='sexo' column='SEXO' />
 		<result property='lesividad' column='LESIVIDAD' />
 		<result property='fecha' column='FECHA' />
+		<result property="hora" column="HORA"/>
 		<result property='expediente' column='EXPEDIENTE' />
 
 

@@ -27,8 +27,6 @@ public class AccidenteClienteEJB {
 		ArrayList<Accidente> a;
 		a = (ArrayList<Accidente>) target1.request().get(new GenericType<List<Accidente>>(){});
 
-		for(Accidente d:  a)
-				System.out.println(d.getExpediente());
 		
 		return a;
 
@@ -76,18 +74,30 @@ public class AccidenteClienteEJB {
 //
 //	}
 //
-//	public ArrayList<Tipos> getTipos() {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.getTipos();
-//
-//	}
-//
-//	public ArrayList<Distritos> busquedaGeneralDistritos() {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.busquedaGeneralDistritos();
-//	}
+	public ArrayList<Tipos> getTipos() {
+		Client cliente = ClientBuilder.newClient();
+		
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getTipos"); 
+		
+		ArrayList<Tipos> a;
+		a = (ArrayList<Tipos>) target1.request().get(new GenericType<List<Tipos>>(){});
+
+		
+		return a;
+
+	}
+
+	public ArrayList<Distritos> busquedaGeneralDistritos() {
+		Client cliente = ClientBuilder.newClient();
+		
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getDistritos"); 
+		
+		ArrayList<Distritos> a;
+		a = (ArrayList<Distritos>) target1.request().get(new GenericType<List<Distritos>>(){});
+
+		
+		return a;
+	}
 //
 //	public ArrayList<Tipos> busquedaGeneralTipos() {
 //		AccidenteDAO a = new AccidenteDAO();

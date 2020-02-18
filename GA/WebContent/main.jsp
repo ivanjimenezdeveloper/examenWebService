@@ -30,7 +30,7 @@
 	<div class="container">
 	
 		<ul>
-			<li><a href="#">Ver todos los accidentes</a></li>
+			<li><a href="MostrarAccidentes">Ver todos los accidentes</a></li>
 			<li><a href="#">Crear accidente</a></li>
 			<li><a href="#">Actualizar accidente</a></li>
 			<li><a href="#">Ver todos los accidentes</a></li>
