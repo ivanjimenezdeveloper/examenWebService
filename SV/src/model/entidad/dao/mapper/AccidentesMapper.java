@@ -9,6 +9,7 @@ import model.entidad.Distritos;
 import model.entidad.Estadisticas;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
+import model.entidad.Vehiculo;
 
 public interface AccidentesMapper {
 
@@ -21,9 +22,9 @@ public interface AccidentesMapper {
 	public Distritos distritoPorId(@Param("id") int id);
 
 	public ArrayList<Estadisticas> getEstadisticas(@Param("inicio") String inicio, @Param("fin") String fin);
-	
-	public ArrayList<Estadisticas> getEstadisticasSexo(@Param("inicio") String inicio, @Param("fin") String fin, @Param("distrito") String distrito);
 
+	public ArrayList<Estadisticas> getEstadisticasSexo(@Param("inicio") String inicio, @Param("fin") String fin,
+			@Param("distrito") String distrito);
 
 	public ArrayList<Accidente> busquedaAccidente(@Param("tipo") String tipo, @Param("fecha") String fecha);
 
@@ -32,7 +33,11 @@ public interface AccidentesMapper {
 	public ArrayList<Distritos> busquedaGeneralDistritos();
 
 	public ArrayList<Tipos> busquedaGeneralTipos();
-	
+
 	public ArrayList<Sexo> getSexos();
+
+	public ArrayList<Vehiculo> getVehiculos();
+	
+	public Integer insertAccidente(Accidente a);
 
 }

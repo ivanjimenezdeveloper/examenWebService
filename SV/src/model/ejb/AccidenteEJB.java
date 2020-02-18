@@ -14,6 +14,7 @@ import model.entidad.Estadisticas;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
+import model.entidad.Vehiculo;
 import model.entidad.dao.AccidenteDAO;
 import model.entidad.dao.mapper.AccidentesMapper;
 
@@ -165,5 +166,18 @@ public class AccidenteEJB {
 
 		return a.getSexos();
 	}
+	public ArrayList<Vehiculo> getVehiculos() {
+		AccidenteDAO a = new AccidenteDAO();
 
+		return a.getVehiculos();
+	}
+	
+	public Integer insertAccidente(Accidente a) {
+		AccidenteDAO ab = new AccidenteDAO();
+		
+		return ab.insertAccidente(a);
+		
+		
+
+	}
 }

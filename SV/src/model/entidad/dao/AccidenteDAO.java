@@ -13,6 +13,7 @@ import model.entidad.Estadisticas;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
+import model.entidad.Vehiculo;
 import model.entidad.dao.mapper.AccidentesMapper;
 import model.entidad.dao.mapper.UsuarioMapper;
 
@@ -249,6 +250,37 @@ public class AccidenteDAO implements AccidentesMapper{
 			logger.error(e.getMessage());
 			ArrayList<Sexo> uArr = new ArrayList<Sexo>();
 			return uArr;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public ArrayList<Vehiculo> getVehiculos() {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			return accidenteMapper.getVehiculos();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ArrayList<Vehiculo> uArr = new ArrayList<Vehiculo>();
+			return uArr;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public Integer insertAccidente(Accidente a) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			accidenteMapper.insertAccidente(a);
+			sqlSession.commit();
+			return 1;
+		} catch (Exception e) {
+
+			return 0;
 		} finally {
 			sqlSession.close();
 		}

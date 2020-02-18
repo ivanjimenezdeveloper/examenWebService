@@ -21,6 +21,7 @@ import model.entidad.Distritos;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Usuario;
+import model.entidad.Vehiculo;
 
 @Path("Accidente")
 public class Rest {
@@ -67,7 +68,7 @@ public class Rest {
 		return a;
 
 	}
-	
+
 	@GET
 	@Path("/getSexos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -92,6 +93,29 @@ public class Rest {
 
 	}
 
+	@GET
+	@Path("/getVehiculos/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Vehiculo> getVehiculos() {
+		ArrayList<Vehiculo> a = new ArrayList<Vehiculo>();
+
+		a = accidenteEJB.getVehiculos();
+
+		return a;
+
+	}
+
+	@POST
+	@Path("/insertarAccidente/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Integer insertarAccidente() {
+		ArrayList<Vehiculo> a = new ArrayList<Vehiculo>();
+
+		a = accidenteEJB.getVehiculos();
+		return 0;
+
+	}
+
 	@POST
 	@Path("/logearUsuario/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -101,27 +125,33 @@ public class Rest {
 
 		Usuario u = sesionEJB.usuarioLogeado(sesion);
 
-		//si el usuario es nulo procedera a hacer login
+		// si el usuario es nulo procedera a hacer login
 		if (u == null) {
-			//comprueba que exista el usuario
-			 u = accidenteEJB.getUsuario(a.getNombre(), a.getPass());
+			// comprueba que exista el usuario
+			u = accidenteEJB.getUsuario(a.getNombre(), a.getPass());
 
-			if(u.getId() != null) {
-				
-				//sesionEJB.loginUsuario(sesion, u);
-				
-				
+			if (u.getId() != null) {
+
+				// sesionEJB.loginUsuario(sesion, u);
+
 				return 1;
-			}else {
+			} else {
 				return 0;
 			}
 
+		} else {
+			return 0;
+		}
 
-	}else {
-		return 0;
+	}
+	
+	@POST
+	@Path("/insertAccidente/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Integer insertAccidente(Accidente a) {
+		
+		return accidenteEJB.insertAccidente(a);
 	}
 
 }
-	
-	
-	}

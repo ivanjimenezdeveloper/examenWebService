@@ -11,7 +11,6 @@
 		<result property='tipo_vehiculo' column='TIPO_VEHICULO' />
 		<result property='tipo_persona' column='TIPO_PERSONA' />
 		<result property='sexo' column='SEXO' />
-		<result property='lesividad' column='LESIVIDAD' />
 		<result property='fecha' column='FECHA' />
 		<result property="hora" column="HORA" />
 		<result property='expediente' column='EXPEDIENTE' />
@@ -116,14 +115,18 @@
 	<select id="getSexos" resultType="Sexo">
 		SELECT * FROM TIPOS_SEXO
 	</select>
-<!-- 	<insert id="insertAccidente" resultMap="AccidenteResult"> -->
-<!-- 		INSERT INTO -->
-<!-- 		ACCIDENTES(EXPEDIENTE, FECHA, HORA, DIRECCION, ID_DISTRITO, -->
-<!-- 		ID_TIPO_ACCIDENTE, ID_TIPO_VEHICULO, ID_SEXO ) -->
-<!-- 		VALUES(#{expediente}, -->
-<!-- 		#{fecha}, #{hora}, #{direccion}, #{idDistrito} , #{idAccidente} -->
-<!-- 		,#{idVehiculo}, #{idSexo}); -->
-<!-- 	</insert> -->
+	
+		<select id="getVehiculos" resultType="Vehiculo">
+		SELECT * FROM TIPOS_VEHICULO
+	</select>
+	<insert id="insertAccidente" parameterType="Accidente">
+		INSERT INTO
+		ACCIDENTES(EXPEDIENTE, FECHA, HORA, DIRECCION, ID_DISTRITO,
+		ID_TIPO_ACCIDENTE, ID_TIPO_VEHICULO, ID_SEXO )
+		VALUES(#{expediente},
+		#{fecha}, #{hora}, #{direccion}, #{idDistrito} , #{idAccidente}
+		,#{idVehiculo}, #{idSexo});
+	</insert>
 
 
 </mapper>

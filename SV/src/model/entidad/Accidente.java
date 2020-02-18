@@ -1,16 +1,14 @@
 package model.entidad;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Accidente {
 	private Integer id, id_distrito, id_tipo_accidente;
-	private String expediente, direccion, tipo_vehiculo, tipo_persona, sexo, lesividad;
+	private String expediente, direccion, tipo_vehiculo, sexo;
 	private String fecha, hora;
 
 	public Accidente(Integer id, Integer id_distrito, Integer id_tipo_accidente, String expediente, String direccion,
-			String tipo_vehiculo, String tipo_persona, String sexo, String lesividad, String fecha, String hora) {
+			String tipo_vehiculo,String sexo, String fecha, String hora) {
 		super();
 		this.id = id;
 		this.id_distrito = id_distrito;
@@ -18,9 +16,7 @@ public class Accidente {
 		this.expediente = expediente;
 		this.direccion = direccion;
 		this.tipo_vehiculo = tipo_vehiculo;
-		this.tipo_persona = tipo_persona;
 		this.sexo = sexo;
-		this.lesividad = lesividad;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
@@ -38,6 +34,14 @@ public class Accidente {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public Integer getIdAccidente() {
+		return id;
+	}
+
+	public void setIdAccidente(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getId_distrito() {
 		return id_distrito;
@@ -46,7 +50,13 @@ public class Accidente {
 	public void setId_distrito(Integer id_distrito) {
 		this.id_distrito = id_distrito;
 	}
+	public Integer getIdDistrito() {
+		return id_distrito;
+	}
 
+	public void setIdDistrito(Integer id_distrito) {
+		this.id_distrito = id_distrito;
+	}
 	public Integer getId_tipo_accidente() {
 		return id_tipo_accidente;
 	}
@@ -75,16 +85,16 @@ public class Accidente {
 		return tipo_vehiculo;
 	}
 
-	public void setTipo_vehiculo(String tipo_vehiculo) {
+	public void setIdVehiculo(String tipo_vehiculo) {
 		this.tipo_vehiculo = tipo_vehiculo;
 	}
-
-	public String getTipo_persona() {
-		return tipo_persona;
+	
+	public String getIdVehiculo() {
+		return tipo_vehiculo;
 	}
 
-	public void setTipo_persona(String tipo_persona) {
-		this.tipo_persona = tipo_persona;
+	public void setTipo_vehiculo(String tipo_vehiculo) {
+		this.tipo_vehiculo = tipo_vehiculo;
 	}
 
 	public String getSexo() {
@@ -94,14 +104,15 @@ public class Accidente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-
-	public String getLesividad() {
-		return lesividad;
+	
+	public String getIdSexo() {
+		return sexo;
 	}
 
-	public void setLesividad(String lesividad) {
-		this.lesividad = lesividad;
+	public void setIdSexo(String sexo) {
+		this.sexo = sexo;
 	}
+
 
 	public String getFecha() {
 		return fecha;

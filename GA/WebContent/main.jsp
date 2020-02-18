@@ -32,9 +32,6 @@
 		<ul>
 			<li><a href="MostrarAccidentes">Ver todos los accidentes</a></li>
 			<li><a href="CrearAccidentes">Crear accidente</a></li>
-			<li><a href="#">Actualizar accidente</a></li>
-			<li><a href="#">Ver todos los accidentes</a></li>
-
 		</ul>
 	</div>
 	<div class="footer">
