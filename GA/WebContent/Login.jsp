@@ -13,7 +13,7 @@
 	<div class="nav">
 		<div class="header">
 			<div class="logoHeader"></div>
-			<h1>IMC</h1>
+			<h1>Gestion de accidentes</h1>
 			<div class="nodoInvisibleHeader"></div>
 			<div class="usuario">
 				<div>

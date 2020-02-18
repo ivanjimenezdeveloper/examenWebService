@@ -41,7 +41,7 @@
 	<div class="nav">
 		<div class="header">
 			<div class="logoHeader"></div>
-			<h1>Examen JSP</h1>
+			<h1>Seguridad Vial</h1>
 			<div class="nodoInvisibleHeader"></div>
 		</div>
 		<div class="tab">

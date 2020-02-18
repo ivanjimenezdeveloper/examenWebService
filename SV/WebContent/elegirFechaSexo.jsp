@@ -19,7 +19,7 @@
 	<div class="nav">
 		<div class="header">
 			<div class="logoHeader"></div>
-			<h1>Gestion de accidentes</h1>
+			<h1>Seguridad Vial</h1>
 			<div class="nodoInvisibleHeader"></div>
 			<div class="usuario">
 				<div>
