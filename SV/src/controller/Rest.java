@@ -23,16 +23,29 @@ import model.entidad.Tipos;
 import model.entidad.Usuario;
 import model.entidad.Vehiculo;
 
+/**
+ * Servicio rest para la base de accidentes de 2019
+ * @author HIBAN
+ *
+ */
 @Path("Accidente")
 public class Rest {
 
+	// recupera la request
 	@Context
 	HttpServletRequest request;
+	// EJBs
 	@EJB
 	AccidenteEJB accidenteEJB;
 	@EJB
 	SesionEJB sesionEJB;
 
+	/**
+	 * Envia un accidente
+	 * 
+	 * @param id id de accidente
+	 * @return accidente
+	 */
 	@GET
 	@Path("/getAccidente/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -45,6 +58,10 @@ public class Rest {
 
 	}
 
+	/**
+	 * Recupera todos los accidentes
+	 * @return arraylist de accidentes
+	 */
 	@GET
 	@Path("/getAccidentes/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -57,6 +74,10 @@ public class Rest {
 
 	}
 
+	/**
+	 * Recupera los distritos
+	 * @return arraylist de distritos
+	 */
 	@GET
 	@Path("/getDistritos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -69,6 +90,10 @@ public class Rest {
 
 	}
 
+	/**
+	 * Recupera los sexos
+	 * @return arraylist de sexos
+	 */
 	@GET
 	@Path("/getSexos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -81,6 +106,10 @@ public class Rest {
 
 	}
 
+	/**
+	 * Recupera los tipos de accidentes
+	 * @return arraylist de tipos de accidentes
+	 */
 	@GET
 	@Path("/getTipos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -90,9 +119,12 @@ public class Rest {
 		a = accidenteEJB.busquedaGeneralTipos();
 
 		return a;
-
 	}
 
+	/**
+	 * Recupera los vehiculos
+	 * @return arraylist de vehiculos
+	 */
 	@GET
 	@Path("/getVehiculos/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -105,6 +137,11 @@ public class Rest {
 
 	}
 
+	/**
+	 * Log in de ususario donde verifica si existe el usuario con ese nombre y contraseña
+	 * @param a usuario a verificar
+	 * @return 1 o 0 segun si existe o no
+	 */
 	@POST
 	@Path("/logearUsuario/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -134,6 +171,11 @@ public class Rest {
 
 	}
 
+	/**
+	 * Inserta un accidente
+	 * @param a accidente a insertar
+	 * @return 1 o 0 segun si funciona el insert
+	 */
 	@POST
 	@Path("/insertAccidente/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -143,6 +185,11 @@ public class Rest {
 		return accidenteEJB.insertAccidente(a);
 	}
 
+	/**
+	 * Actualiza un accidente
+	 * @param a accidente a actualizar
+	 * @return 1 o 0 segun si funciona la actualizacion
+	 */
 	@POST
 	@Path("/updateAccidente/")
 	@Consumes(MediaType.APPLICATION_JSON)

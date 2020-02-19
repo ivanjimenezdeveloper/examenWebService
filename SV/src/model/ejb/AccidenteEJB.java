@@ -107,6 +107,13 @@ public class AccidenteEJB {
 
 	}
 
+	/**
+	 * Devuelve estadisticas segun los datos
+	 * @param inicio fecha de inicio
+	 * @param fin fecha fin
+	 * @param distrito distrito que mirar
+	 * @return arraylist de estadisticas
+	 */
 	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
 		AccidenteDAO a = new AccidenteDAO();
 
@@ -137,30 +144,54 @@ public class AccidenteEJB {
 		return a.busquedaGeneralTipos();
 	}
 
+	/**
+	 * Recupera un usuario por id
+	 * @param id id de usuario
+	 * @return objeto usuario
+	 */
 	public Usuario usuarioPorId(Integer id) {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.usuarioPorId(id);
 	}
 
+	/**
+	 * Recupera el usuario segun su pass y nombre
+	 * @param nombre nombre de usuario
+	 * @param pass pass del usuario
+	 * @return objeto usuario
+	 */
 	public Usuario getUsuario(String nombre, String pass) {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.getUsuario(nombre, pass);
 	}
 
+	/**
+	 * Recupera los sexos
+	 * @return arraylist de sexos
+	 */
 	public ArrayList<Sexo> getSexos() {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.getSexos();
 	}
 
+	/**
+	 * Recupera los vehiculos
+	 * @return arraylist de vehiculos
+	 */
 	public ArrayList<Vehiculo> getVehiculos() {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.getVehiculos();
 	}
 
+	/**
+	 * Inserta un accidente
+	 * @param a accidente a insertar
+	 * @return 1 o 0 segun si funciona el insert
+	 */
 	public Integer insertAccidente(Accidente a) {
 		AccidenteDAO ab = new AccidenteDAO();
 
@@ -168,6 +199,11 @@ public class AccidenteEJB {
 
 	}
 
+	/**
+	 * Actualiza un accidente
+	 * @param a accidente a actualizar
+	 * @return 1 o 0 segun si funciona la actualizacion
+	 */
 	public Integer updateAccidente(Accidente a) {
 		AccidenteDAO ab = new AccidenteDAO();
 
