@@ -286,4 +286,20 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	@Override
+	public Integer updateAccidente(Accidente a) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			accidenteMapper.updateAccidente(a);
+			sqlSession.commit();
+			return 1;
+		} catch (Exception e) {
+
+			return 0;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
 }

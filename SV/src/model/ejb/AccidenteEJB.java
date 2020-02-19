@@ -166,18 +166,24 @@ public class AccidenteEJB {
 
 		return a.getSexos();
 	}
+
 	public ArrayList<Vehiculo> getVehiculos() {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.getVehiculos();
 	}
-	
+
 	public Integer insertAccidente(Accidente a) {
 		AccidenteDAO ab = new AccidenteDAO();
-		
+
 		return ab.insertAccidente(a);
-		
-		
+
+	}
+
+	public Integer updateAccidente(Accidente a) {
+		AccidenteDAO ab = new AccidenteDAO();
+
+		return ab.updateAccidente(a);
 
 	}
 }

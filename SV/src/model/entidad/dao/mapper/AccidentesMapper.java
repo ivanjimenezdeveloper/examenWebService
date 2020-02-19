@@ -37,7 +37,9 @@ public interface AccidentesMapper {
 	public ArrayList<Sexo> getSexos();
 
 	public ArrayList<Vehiculo> getVehiculos();
-	
+
 	public Integer insertAccidente(Accidente a);
+
+	public Integer updateAccidente(Accidente a);
 
 }

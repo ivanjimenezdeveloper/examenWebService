@@ -68,7 +68,7 @@ public class ModificarAccidente extends HttpServlet {
 		String expediente, fecha, horas, minutos, direccion ;
 		Integer distrito, accidente, vehiculo, sexo;
 		HttpSession sesion = request.getSession(true);
-
+		Accidente ab = (Accidente)sesion.getAttribute("accidente");
 		try {
 			expediente = request.getParameter("expediente");
 			fecha = request.getParameter("fecha");
@@ -80,8 +80,7 @@ public class ModificarAccidente extends HttpServlet {
 			vehiculo = Integer.parseInt(request.getParameter("vehiculoTipo"));
 			sexo = Integer.parseInt(request.getParameter("sexo"));
 
-			Accidente a = new Accidente(0, distrito, accidente, expediente, direccion, vehiculo, sexo, fecha,
-					horas + ":" + minutos + ":00");
+
 
 		} catch (Exception e) {
 			expediente = "";
@@ -96,9 +95,10 @@ public class ModificarAccidente extends HttpServlet {
 
 		}
 
-		Accidente a = new Accidente(0, distrito, accidente, expediente, direccion, vehiculo, sexo, fecha,
+		Accidente a = new Accidente(ab.getId(), distrito, accidente, expediente, direccion, vehiculo, sexo, fecha,
 				horas + ":" + minutos + ":00");
 
+		accidentesEjb.updateAccidente(a);
 
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/main.jsp");
 		rs.forward(request, response);

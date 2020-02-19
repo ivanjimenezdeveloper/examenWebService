@@ -105,7 +105,6 @@ public class Rest {
 
 	}
 
-
 	@POST
 	@Path("/logearUsuario/")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -134,16 +133,23 @@ public class Rest {
 		}
 
 	}
-	
+
 	@POST
 	@Path("/insertAccidente/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public Integer insertAccidente(Accidente a) {
-		
+
 		return accidenteEJB.insertAccidente(a);
 	}
-	
 
+	@POST
+	@Path("/updateAccidente/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Integer updateAccidente(Accidente a) {
+
+		return accidenteEJB.updateAccidente(a);
+	}
 
 }

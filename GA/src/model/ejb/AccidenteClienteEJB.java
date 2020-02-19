@@ -141,6 +141,15 @@ public class AccidenteClienteEJB {
 		target1.request().post(Entity.json(a));
 
 	}
+	
+	public void updateAccidente(Accidente a) {
+		Client cliente = ClientBuilder.newClient();
+
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/updateAccidente");
+
+		target1.request().post(Entity.json(a));
+
+	}
 //
 //	public ArrayList<Tipos> busquedaGeneralTipos() {
 //		AccidenteDAO a = new AccidenteDAO();

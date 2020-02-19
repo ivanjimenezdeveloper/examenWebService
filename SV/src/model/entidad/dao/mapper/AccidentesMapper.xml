@@ -84,7 +84,7 @@
 		order by sexo desc, vehiculo
 		DESC;
 	</select>
-	
+
 	<select id="busquedaAccidente" resultMap="AccidenteResult">
 		SELECT ACCIDENTES.*
 		FROM ACCIDENTES, TIPOS_ACCIDENTE WHERE
@@ -115,9 +115,10 @@
 	<select id="getSexos" resultType="Sexo">
 		SELECT * FROM TIPOS_SEXO
 	</select>
-	
-		<select id="getVehiculos" resultType="Vehiculo">
-		SELECT * FROM TIPOS_VEHICULO
+
+	<select id="getVehiculos" resultType="Vehiculo">
+		SELECT * FROM
+		TIPOS_VEHICULO
 	</select>
 	<insert id="insertAccidente" parameterType="Accidente">
 		INSERT INTO
@@ -125,8 +126,16 @@
 		ID_TIPO_ACCIDENTE, ID_TIPO_VEHICULO, ID_SEXO )
 		VALUES(#{expediente},
 		#{fecha}, #{hora}, #{direccion}, #{idDistrito} , #{idAccidente}
-		,#{idVehiculo}, #{idSexo});
+		,#{id_tipo_vehiculo}, #{id_sexo});
 	</insert>
+
+	<update id="updateAccidente" parameterType="Accidente">
+		UPDATE accidentes
+		SET EXPEDIENTE = #{expediente}, FECHA= #{fecha}, HORA =
+		#{hora}, DIRECCION = #{direccion}, ID_DISTRITO = #{idDistrito}, ID_TIPO_ACCIDENTE =
+		#{idAccidente}, ID_TIPO_VEHICULO = #{id_tipo_vehiculo}, ID_SEXO = #{id_sexo}
+		WHERE ID = #{id}
+	</update>
 
 
 </mapper>
