@@ -14,35 +14,27 @@ import javax.servlet.http.HttpSession;
 import model.ejb.SesionClienteEJB;
 
 /**
- * Servlet implementation class Logout
+ * Servlet que cierra la sesion
+ * @author horabaixa
+ *
  */
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Logout() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	//EJBs
 	@EJB
 	SesionClienteEJB sesionEJB;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
+		//hace el logout
 		sesionEJB.logoutUsuario(sesion);
-		
+		//Redirige a login
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
 		rs.forward(request, response);	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+
 
 }

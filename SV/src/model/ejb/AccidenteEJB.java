@@ -197,6 +197,10 @@ public class AccidenteEJB {
 
 	}
 	
+	/**
+	 * Borra un accidente
+	 * @param id id de accidente a borrar
+	 */
 	public void deleteAccidente(Integer id) {
 		AccidenteDAO ab = new AccidenteDAO();
 

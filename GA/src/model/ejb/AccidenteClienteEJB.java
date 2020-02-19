@@ -159,6 +159,11 @@ public class AccidenteClienteEJB {
 
 	}
 	
+	/**
+	 * Logea al usuario
+	 * @param a usuario a logear
+	 * @return Integer que muestra si ha funcionado o no
+	 */
 	public Integer logearUsuario(Usuario a) {
 		Client cliente = ClientBuilder.newClient();
 
@@ -167,6 +172,10 @@ public class AccidenteClienteEJB {
 		return target1.request().post(Entity.json(a), Integer.class);
 	}
 	
+	/**
+	 * Borra un accidente
+	 * @param i id del accidente a borrar
+	 */
 	public void deleteAccidente(Integer i) {
 		Client cliente = ClientBuilder.newClient();
 

@@ -41,6 +41,7 @@ public class Rest {
 	AccidenteEJB accidenteEJB;
 	@EJB
 	SesionEJB sesionEJB;
+	//Palabra secreta entre cliente y server
 	private final String TOKEN = "patata23";
 
 	/**
@@ -231,6 +232,11 @@ public class Rest {
 		return 0;
 	}
 
+	/**
+	 * Borra un accidente
+	 * @param id id del accidente a borrar
+	 * @param token palabra secreta entre server y cliente
+	 */
 	@DELETE
 	@Path("/deleteAccidente/{id}/{token}")
 	public void deleteAccidente(@PathParam("id") Integer id, @PathParam("token") String token) {

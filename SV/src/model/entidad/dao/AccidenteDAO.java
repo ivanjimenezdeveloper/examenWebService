@@ -304,6 +304,10 @@ public class AccidenteDAO  {
 		}
 	}
 
+	/**
+	 * Borra un accidente
+	 * @param id id de accidente a borrar
+	 */
 	public void deleteAccidente(Integer id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
