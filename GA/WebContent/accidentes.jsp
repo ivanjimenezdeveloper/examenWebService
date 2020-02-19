@@ -1,3 +1,4 @@
+<%@page import="model.entidad.Usuario"%>
 <%@page import="model.entidad.Estadisticas"%>
 <%@page import="model.ejb.AccidenteClienteEJB"%>
 <%@page import="model.entidad.Tipos"%>
@@ -20,8 +21,14 @@
 <link rel="stylesheet" type="text/css" href="imcDark.css" />
 
 <%
-//recupero la sesion y el atributo de accidentes
+	//recupero la sesion y el atributo de accidentes
 	HttpSession sesionM = request.getSession(true);
+
+	Usuario u = (Usuario) sesionM.getAttribute("user");
+	if(u == null){
+		response.sendRedirect("MainCliente");
+		return;
+	}
 	ArrayList<Accidente> arrJ = (ArrayList) sesionM.getAttribute("accidentes");
 %>
 
@@ -37,7 +44,7 @@
 		</div>
 		<div class="tab">
 			<ul>
-				<li><a href='Main'>HOME</a></li>
+				<li><a href='MainCliente'>HOME</a></li>
 			</ul>
 		</div>
 	</div>
@@ -55,15 +62,16 @@
 			</thead>
 			<tbody>
 				<%
-				//muestro cada accidente es una tabla
+					//muestro cada accidente es una tabla
 					if (arrJ != null | !arrJ.isEmpty()) {
 						for (Accidente j : arrJ) {
 							out.print("<tr>");
 							out.print("<td>" + j.getFecha() + "</td>");
 							out.print("<td>" + j.getHora() + "</td>");
-							out.print("<td><a href='ModificarAccidente?id="+j.getId()+"'>" + j.getExpediente() + "</a></td>");
+							out.print(
+									"<td><a href='ModificarAccidente?id=" + j.getId() + "'>" + j.getExpediente() + "</a></td>");
 							out.print("<td>" + j.getId_distrito() + "</td>");
-
+							out.print("<td><a href='Eliminar?id="+j.getId()+"'>ELIMINAR</td>");
 							out.print("</tr>");
 						}
 					}

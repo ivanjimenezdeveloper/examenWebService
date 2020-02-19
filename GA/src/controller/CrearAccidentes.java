@@ -16,10 +16,12 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
 import model.ejb.AccidenteClienteEJB;
+import model.ejb.SesionClienteEJB;
 import model.entidad.Accidente;
 import model.entidad.Distritos;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
+import model.entidad.Usuario;
 import model.entidad.Vehiculo;
 
 /**
@@ -36,30 +38,40 @@ public class CrearAccidentes extends HttpServlet {
 	//EJB de accidentes
 	@EJB
 	AccidenteClienteEJB accidentesEjb;
-
+	@EJB
+	SesionClienteEJB sesionEJB;
 
 	/**
 	 * Recupera los datos que tienen que ir en los selects y reenvia al jsp
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType(CONTENT_TYPE);
-
-		//Recupera las opciones de los select
+		
 		HttpSession sesion = request.getSession(true);
-		ArrayList<Tipos> arr = accidentesEjb.getTipos();
-		ArrayList<Distritos> arrD = accidentesEjb.busquedaGeneralDistritos();
-		ArrayList<Sexo> arrS = accidentesEjb.getSexos();
-		ArrayList<Vehiculo> arrV = accidentesEjb.getVehiculos();
+		Usuario u =sesionEJB.usuarioLogeado(sesion);
+		
+		if(u != null) {
+			response.setContentType(CONTENT_TYPE);
 
-		//guarda las opciones en la sesion
-		sesion.setAttribute("tipos", arr);
-		sesion.setAttribute("distritos", arrD);
-		sesion.setAttribute("sexos", arrS);
-		sesion.setAttribute("vehiculos", arrV);
-		//redirige al jsp
-		RequestDispatcher rs = getServletContext().getRequestDispatcher("/CrearAccidente.jsp");
-		rs.forward(request, response);
+			//Recupera las opciones de los select
+			ArrayList<Tipos> arr = accidentesEjb.getTipos();
+			ArrayList<Distritos> arrD = accidentesEjb.busquedaGeneralDistritos();
+			ArrayList<Sexo> arrS = accidentesEjb.getSexos();
+			ArrayList<Vehiculo> arrV = accidentesEjb.getVehiculos();
+
+			//guarda las opciones en la sesion
+			sesion.setAttribute("tipos", arr);
+			sesion.setAttribute("distritos", arrD);
+			sesion.setAttribute("sexos", arrS);
+			sesion.setAttribute("vehiculos", arrV);
+			//redirige al jsp
+			RequestDispatcher rs = getServletContext().getRequestDispatcher("/CrearAccidente.jsp");
+			rs.forward(request, response);
+		}else {
+			RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
+			rs.forward(request, response);
+		}
+
 	}
 
 	/**

@@ -16,6 +16,7 @@ import model.entidad.Distritos;
 import model.entidad.Estadisticas;
 import model.entidad.Sexo;
 import model.entidad.Tipos;
+import model.entidad.Usuario;
 import model.entidad.Vehiculo;
 
 /**
@@ -27,6 +28,7 @@ import model.entidad.Vehiculo;
 @Stateless(mappedName = "accidenteejotabe")
 @LocalBean
 public class AccidenteClienteEJB {
+	private final String TOKEN = "patata23";
 
 	/**
 	 * Busqueda de todos los accidentes
@@ -36,7 +38,7 @@ public class AccidenteClienteEJB {
 	public ArrayList<Accidente> busquedaGeneral() {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidentes");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidentes"+"/" +TOKEN);
 
 		ArrayList<Accidente> a;
 		a = (ArrayList<Accidente>) target1.request().get(new GenericType<List<Accidente>>() {
@@ -54,7 +56,7 @@ public class AccidenteClienteEJB {
 	public Accidente getAccidente(int id) {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidente/" + id);
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidente/" + id +"/" +TOKEN);
 
 		Accidente a;
 		a = (Accidente) target1.request().get(Accidente.class);
@@ -72,7 +74,7 @@ public class AccidenteClienteEJB {
 	public ArrayList<Tipos> getTipos() {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getTipos");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getTipos"+"/" +TOKEN);
 
 		ArrayList<Tipos> a;
 		a = (ArrayList<Tipos>) target1.request().get(new GenericType<List<Tipos>>() {
@@ -90,7 +92,7 @@ public class AccidenteClienteEJB {
 	public ArrayList<Distritos> busquedaGeneralDistritos() {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getDistritos");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getDistritos"+"/" +TOKEN);
 
 		ArrayList<Distritos> a;
 		a = (ArrayList<Distritos>) target1.request().get(new GenericType<List<Distritos>>() {
@@ -106,7 +108,7 @@ public class AccidenteClienteEJB {
 	public ArrayList<Sexo> getSexos() {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getSexos");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getSexos"+"/" +TOKEN);
 
 		ArrayList<Sexo> a;
 		a = (ArrayList<Sexo>) target1.request().get(new GenericType<List<Sexo>>() {
@@ -122,7 +124,7 @@ public class AccidenteClienteEJB {
 	public ArrayList<Vehiculo> getVehiculos() {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getVehiculos");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getVehiculos"+"/" +TOKEN);
 
 		ArrayList<Vehiculo> a;
 		a = (ArrayList<Vehiculo>) target1.request().get(new GenericType<List<Vehiculo>>() {
@@ -138,7 +140,7 @@ public class AccidenteClienteEJB {
 	public void insertAccidente(Accidente a) {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/insertAccidente");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/insertAccidente"+"/" +TOKEN);
 
 		target1.request().post(Entity.json(a));
 
@@ -151,10 +153,18 @@ public class AccidenteClienteEJB {
 	public void updateAccidente(Accidente a) {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/updateAccidente");
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/updateAccidente"+"/" +TOKEN);
 
 		target1.request().post(Entity.json(a));
 
+	}
+	
+	public Integer logearUsuario(Usuario a) {
+		Client cliente = ClientBuilder.newClient();
+
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/logearUsuario");
+
+		return target1.request().post(Entity.json(a), Integer.class);
 	}
 
 }

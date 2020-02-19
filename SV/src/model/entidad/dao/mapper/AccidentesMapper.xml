@@ -137,5 +137,8 @@
 		WHERE ID = #{id}
 	</update>
 
+	<delete id="deleteAccidente">
+	DELETE FROM ACCIDENTES WHERE ID = #{id}
+	</delete>
 
 </mapper>

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.ejb.AccidenteClienteEJB;
+import model.ejb.SesionClienteEJB;
 import model.entidad.Accidente;
+import model.entidad.Usuario;
 
 /**
  * Servlet que muestra todos los accidentes
@@ -26,6 +28,8 @@ public class MostrarAccidentes extends HttpServlet {
 
 	@EJB
 	AccidenteClienteEJB accidentesEjb;
+	@EJB
+	SesionClienteEJB sesionEJB;
 	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 
 	/**
@@ -36,12 +40,21 @@ public class MostrarAccidentes extends HttpServlet {
 		response.setContentType(CONTENT_TYPE);
 
 		HttpSession sesion = request.getSession(true);
-		//recoge los accidentes y los guarda en la sesion
-		ArrayList<Accidente> arr = accidentesEjb.busquedaGeneral();
-		sesion.setAttribute("accidentes",arr );
-		//redirige
-		RequestDispatcher rs = getServletContext().getRequestDispatcher("/accidentes.jsp");
-		rs.forward(request, response);
+		Usuario u =sesionEJB.usuarioLogeado(sesion);
+		
+		if(u != null) {
+			//recoge los accidentes y los guarda en la sesion
+			ArrayList<Accidente> arr = accidentesEjb.busquedaGeneral();
+			sesion.setAttribute("accidentes",arr );
+			//redirige
+			RequestDispatcher rs = getServletContext().getRequestDispatcher("/accidentes.jsp");
+			rs.forward(request, response);
+	
+		}else {
+			RequestDispatcher rs = getServletContext().getRequestDispatcher("/Login.jsp");
+			rs.forward(request, response);
+		}
+
 	}
 
 

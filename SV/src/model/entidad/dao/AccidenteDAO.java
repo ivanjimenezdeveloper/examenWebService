@@ -17,11 +17,12 @@ import model.entidad.Vehiculo;
 import model.entidad.dao.mapper.AccidentesMapper;
 import model.entidad.dao.mapper.UsuarioMapper;
 
-public class AccidenteDAO implements AccidentesMapper{
+public class AccidenteDAO implements AccidentesMapper {
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(AccidenteDAO.class);
 
 	/**
 	 * Busqueda de todos los accidentes
+	 * 
 	 * @return ArrayList con los accidentes
 	 */
 	public ArrayList<Accidente> busquedaGeneral() {
@@ -40,6 +41,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Busqueda de tipo por id
+	 * 
 	 * @param id id del tipo de accidente
 	 * @return Objeto de tipos
 	 */
@@ -60,6 +62,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Conseguir un accidente por id
+	 * 
 	 * @param id id del accidente
 	 * @return objeto accidente
 	 */
@@ -80,6 +83,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Consigue un distrito por id
+	 * 
 	 * @param id id del distrito
 	 * @return objeto distrito
 	 */
@@ -100,6 +104,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Devuelve todas las estadisticas
+	 * 
 	 * @return Arraylist con todas las estadisticas
 	 */
 	@Override
@@ -116,51 +121,13 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.close();
 		}
 	}
-	
-	
-	/**
-	 * Devuelve todos los distritos
-	 * @return ArrayList de Distritos
-	 */
-	@Override
-	public ArrayList<Accidente> busquedaAccidente(String tipo, String fecha) {
-		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
-		try {
-			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
-			return accidenteMapper.busquedaAccidente(tipo, fecha);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ArrayList<Accidente> uArr = new ArrayList<Accidente>();
-			return uArr;
-		} finally {
-			sqlSession.close();
-		}
-	}
 
 
-	/**
-	 * Busqueda de accidentes despues de la fecha dada
-	 * @param tipo tipo de accidente
-	 * @param fecha fecha inicial
-	 * @return Arraylist de accidentes
-	 */
-	@Override
-	public ArrayList<Accidente> busquedaAccidenteDespues(String tipo, String fecha) {
-		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
-		try {
-			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
-			return accidenteMapper.busquedaAccidenteDespues(tipo, fecha);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ArrayList<Accidente> uArr = new ArrayList<Accidente>();
-			return uArr;
-		} finally {
-			sqlSession.close();
-		}
-	}
+
 
 	/**
 	 * Devuelve todos los distritos
+	 * 
 	 * @return ArrayList de Distritos
 	 */
 	@Override
@@ -180,6 +147,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Devuelve todos los tipos de accidentes
+	 * 
 	 * @return ArrayList de tipos de accidentes
 	 */
 	@Override
@@ -196,9 +164,10 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.close();
 		}
 	}
-	
+
 	/**
 	 * Recupera un usuario por id
+	 * 
 	 * @param id id de usuario
 	 * @return objeto usuario
 	 */
@@ -215,11 +184,12 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.close();
 		}
 	}
-	
+
 	/**
 	 * Recupera el usuario segun su pass y nombre
+	 * 
 	 * @param nombre nombre de usuario
-	 * @param pass pass del usuario
+	 * @param pass   pass del usuario
 	 * @return objeto usuario
 	 */
 	public Usuario getUsuario(String nombre, String pass) {
@@ -238,8 +208,9 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Devuelve estadisticas segun los datos
-	 * @param inicio fecha de inicio
-	 * @param fin fecha fin
+	 * 
+	 * @param inicio   fecha de inicio
+	 * @param fin      fecha fin
 	 * @param distrito distrito que mirar
 	 * @return arraylist de estadisticas
 	 */
@@ -260,6 +231,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Recupera los sexos
+	 * 
 	 * @return arraylist de sexos
 	 */
 	@Override
@@ -279,6 +251,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Recupera los vehiculos
+	 * 
 	 * @return arraylist de vehiculos
 	 */
 	@Override
@@ -298,6 +271,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Inserta un accidente
+	 * 
 	 * @param a accidente a insertar
 	 * @return 1 o 0 segun si funciona el insert
 	 */
@@ -320,6 +294,7 @@ public class AccidenteDAO implements AccidentesMapper{
 
 	/**
 	 * Actualiza un accidente
+	 * 
 	 * @param a accidente a actualizar
 	 * @return 1 o 0 segun si funciona la actualizacion
 	 */
@@ -335,6 +310,22 @@ public class AccidenteDAO implements AccidentesMapper{
 			logger.error(e.getMessage());
 
 			return 0;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void deleteAccidente(Integer id) {
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		try {
+			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);
+			accidenteMapper.deleteAccidente(id);
+			;
+			sqlSession.commit();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+
 		} finally {
 			sqlSession.close();
 		}

@@ -23,12 +23,14 @@
 		</div>
 		<div class="tab">
 			<ul>
-				<li><a href='Main'>HOME</a></li>
+				<li><a href='MainCliente'>HOME</a></li>
+				<li><a href='Logout'>Logout</a></li>
+
 			</ul>
 		</div>
 	</div>
 	<div class="container">
-	
+
 		<ul>
 			<li><a href="MostrarAccidentes">Ver todos los accidentes</a></li>
 			<li><a href="CrearAccidentes">Crear accidente</a></li>

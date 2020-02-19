@@ -1,10 +1,13 @@
 package model.entidad;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * POJO de usuarios
  * @author HIBAN
  *
  */
+@XmlRootElement
 public class Usuario {
 	private Integer id;
 	private String nombre, pass;

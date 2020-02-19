@@ -26,10 +26,6 @@ public interface AccidentesMapper {
 	public ArrayList<Estadisticas> getEstadisticasSexo(@Param("inicio") String inicio, @Param("fin") String fin,
 			@Param("distrito") Integer distrito);
 
-	public ArrayList<Accidente> busquedaAccidente(@Param("tipo") String tipo, @Param("fecha") String fecha);
-
-	public ArrayList<Accidente> busquedaAccidenteDespues(@Param("tipo") String tipo, @Param("fecha") String fecha);
-
 	public ArrayList<Distritos> busquedaGeneralDistritos();
 
 	public ArrayList<Tipos> busquedaGeneralTipos();
@@ -41,5 +37,7 @@ public interface AccidentesMapper {
 	public Integer insertAccidente(Accidente a);
 
 	public Integer updateAccidente(Accidente a);
+	
+	public void deleteAccidente(@Param("id") Integer id);
 
 }

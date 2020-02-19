@@ -25,6 +25,7 @@ import model.entidad.Vehiculo;
 
 /**
  * Servicio rest para la base de accidentes de 2019
+ * 
  * @author HIBAN
  *
  */
@@ -39,6 +40,7 @@ public class Rest {
 	AccidenteEJB accidenteEJB;
 	@EJB
 	SesionEJB sesionEJB;
+	private final String TOKEN = "patata23";
 
 	/**
 	 * Envia un accidente
@@ -47,98 +49,110 @@ public class Rest {
 	 * @return accidente
 	 */
 	@GET
-	@Path("/getAccidente/{id}")
+	@Path("/getAccidente/{id}/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Accidente getJugador(@PathParam("id") int id) {
+	public Accidente getJugador(@PathParam("id") int id, @PathParam("token") String token) {
 		Accidente a = new Accidente();
 
-		a = accidenteEJB.getAccidente(id);
+		if (token.equals(TOKEN)) {
+
+			a = accidenteEJB.getAccidente(id);
+
+			return a;
+		}
 
 		return a;
-
 	}
 
 	/**
 	 * Recupera todos los accidentes
+	 * 
 	 * @return arraylist de accidentes
 	 */
 	@GET
-	@Path("/getAccidentes/")
+	@Path("/getAccidentes/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Accidente> busquedaGeneralAccidentes() {
+	public ArrayList<Accidente> busquedaGeneralAccidentes(@PathParam("token") String token) {
 		ArrayList<Accidente> a = new ArrayList<Accidente>();
-
+		if (token.equals(TOKEN)) {
 		a = accidenteEJB.busquedaGeneral();
 
+		return a;}
 		return a;
 
 	}
 
 	/**
 	 * Recupera los distritos
+	 * 
 	 * @return arraylist de distritos
 	 */
 	@GET
-	@Path("/getDistritos/")
+	@Path("/getDistritos/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Distritos> busquedaGeneralDistritos() {
+	public ArrayList<Distritos> busquedaGeneralDistritos(@PathParam("token") String token) {
 		ArrayList<Distritos> a = new ArrayList<Distritos>();
-
+		if (token.equals(TOKEN)) {
 		a = accidenteEJB.busquedaGeneralDistritos();
 
-		return a;
+		return a;}return a;
 
 	}
 
 	/**
 	 * Recupera los sexos
+	 * 
 	 * @return arraylist de sexos
 	 */
 	@GET
-	@Path("/getSexos/")
+	@Path("/getSexos/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Sexo> getSexos() {
+	public ArrayList<Sexo> getSexos(@PathParam("token") String token) {
 		ArrayList<Sexo> a = new ArrayList<Sexo>();
-
+		if (token.equals(TOKEN)) {
 		a = accidenteEJB.getSexos();
 
-		return a;
+		return a;}return a;
 
 	}
 
 	/**
 	 * Recupera los tipos de accidentes
+	 * 
 	 * @return arraylist de tipos de accidentes
 	 */
 	@GET
-	@Path("/getTipos/")
+	@Path("/getTipos/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Tipos> busquedaGeneralTipos() {
+	public ArrayList<Tipos> busquedaGeneralTipos(@PathParam("token") String token) {
 		ArrayList<Tipos> a = new ArrayList<Tipos>();
-
+		if (token.equals(TOKEN)) {
 		a = accidenteEJB.busquedaGeneralTipos();
 
-		return a;
+		return a;}return a;
 	}
 
 	/**
 	 * Recupera los vehiculos
+	 * 
 	 * @return arraylist de vehiculos
 	 */
 	@GET
-	@Path("/getVehiculos/")
+	@Path("/getVehiculos/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Vehiculo> getVehiculos() {
+	public ArrayList<Vehiculo> getVehiculos(@PathParam("token") String token) {
 		ArrayList<Vehiculo> a = new ArrayList<Vehiculo>();
-
+		if (token.equals(TOKEN)) {
 		a = accidenteEJB.getVehiculos();
 
-		return a;
+		return a;}return a;
 
 	}
 
 	/**
-	 * Log in de ususario donde verifica si existe el usuario con ese nombre y contraseña
+	 * Log in de ususario donde verifica si existe el usuario con ese nombre y
+	 * contraseï¿½a
+	 * 
 	 * @param a usuario a verificar
 	 * @return 1 o 0 segun si existe o no
 	 */
@@ -173,30 +187,32 @@ public class Rest {
 
 	/**
 	 * Inserta un accidente
+	 * 
 	 * @param a accidente a insertar
 	 * @return 1 o 0 segun si funciona el insert
 	 */
 	@POST
-	@Path("/insertAccidente/")
+	@Path("/insertAccidente/{token}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Integer insertAccidente(Accidente a) {
-
-		return accidenteEJB.insertAccidente(a);
+	public Integer insertAccidente(Accidente a, @PathParam("token") String token) {
+		if (token.equals(TOKEN)) {
+		return accidenteEJB.insertAccidente(a);} return 0;
 	}
 
 	/**
 	 * Actualiza un accidente
+	 * 
 	 * @param a accidente a actualizar
 	 * @return 1 o 0 segun si funciona la actualizacion
 	 */
 	@POST
-	@Path("/updateAccidente/")
+	@Path("/updateAccidente/{token}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public Integer updateAccidente(Accidente a) {
-
-		return accidenteEJB.updateAccidente(a);
+	public Integer updateAccidente(Accidente a, @PathParam("token") String token) {
+		if (token.equals(TOKEN)) {
+		return accidenteEJB.updateAccidente(a);}return 0;
 	}
 
 }

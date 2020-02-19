@@ -24,12 +24,12 @@
 		</div>
 		<div class="tab">
 			<ul>
-				<li><a href='Main'>HOME</a></li>
+				<li><a href='MainCliente'>HOME</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="container">
-		<form method="POST" action="Login">
+		<form method="POST" action="MainCliente">
 			<div>
 				<p>Usuario</p>
 				<input type="text" name="user" />

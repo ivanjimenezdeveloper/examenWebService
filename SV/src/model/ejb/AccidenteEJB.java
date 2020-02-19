@@ -40,20 +40,6 @@ public class AccidenteEJB {
 
 	}
 
-	/**
-	 * Busca los accidentes segun el tipo y fecha
-	 * 
-	 * @param tipo  tipo de accidente
-	 * @param fecha fecha inicial
-	 * @return ArrayList de accidentes
-	 */
-	public ArrayList<Accidente> busquedaAccidente(String tipo, String fecha) {
-		AccidenteDAO a = new AccidenteDAO();
-
-		return a.busquedaAccidente(tipo, fecha);
-
-	}
-
 
 
 	/**

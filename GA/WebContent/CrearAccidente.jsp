@@ -1,3 +1,4 @@
+<%@page import="model.entidad.Usuario"%>
 <%@page import="model.entidad.Vehiculo"%>
 <%@page import="model.entidad.Sexo"%>
 <%@page import="model.entidad.Distritos"%>
@@ -25,6 +26,12 @@
 <%
 	//recupero la sesion y sus atributos
 	HttpSession sesionM = request.getSession(true);
+
+	Usuario u = (Usuario) sesionM.getAttribute("user");
+	if (u == null) {
+		response.sendRedirect("MainCliente");
+		return;
+	}
 	ArrayList<Tipos> arrJ = (ArrayList) sesionM.getAttribute("tipos");
 	ArrayList<Distritos> arrD = (ArrayList) sesionM.getAttribute("distritos");
 	ArrayList<Sexo> arrS = (ArrayList) sesionM.getAttribute("sexos");
@@ -43,7 +50,7 @@
 		</div>
 		<div class="tab">
 			<ul>
-				<li><a href='Main'>HOME</a></li>
+				<li><a href='MainCliente'>HOME</a></li>
 			</ul>
 		</div>
 	</div>
@@ -93,7 +100,7 @@
 				%>
 			</select> <label>Sexo</label> <select name="sexo" required="required">
 				<%
-				//Muestra los sexos en opciones
+					//Muestra los sexos en opciones
 
 					if (arrS != null | !arrS.isEmpty()) {
 						for (Sexo j : arrS) {
