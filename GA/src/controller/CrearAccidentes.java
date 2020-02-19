@@ -63,8 +63,8 @@ public class CrearAccidentes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String expediente, fecha, horas, minutos, direccion, vehiculo, sexo;
-		Integer distrito, accidente;
+		String expediente, fecha, horas, minutos, direccion;
+		Integer distrito, accidente, vehiculo, sexo;
 		try {
 			expediente = request.getParameter("expediente");
 			fecha = request.getParameter("fecha");
@@ -73,8 +73,8 @@ public class CrearAccidentes extends HttpServlet {
 			direccion = request.getParameter("direccion");
 			distrito = Integer.parseInt(request.getParameter("distrito"));
 			accidente = Integer.parseInt(request.getParameter("accidenteTipo"));
-			vehiculo = request.getParameter("vehiculoTipo");
-			sexo = request.getParameter("sexo");
+			vehiculo = Integer.parseInt(request.getParameter("vehiculoTipo"));
+			sexo = Integer.parseInt(request.getParameter("sexo"));
 
 			Accidente a = new Accidente(0, distrito, accidente, expediente, direccion, vehiculo, sexo, fecha,
 					horas + ":" + minutos + ":00");
@@ -85,8 +85,8 @@ public class CrearAccidentes extends HttpServlet {
 			horas = "";
 			minutos = "";
 			direccion = "";
-			vehiculo = "";
-			sexo = "";
+			vehiculo = -1;
+			sexo = -1;
 			distrito = -1;
 			accidente = -1;
 

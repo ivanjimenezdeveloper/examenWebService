@@ -58,8 +58,8 @@
 			$("#min").val(horaArray[1]);
 			$("#distrito").val("<% out.print(acc.getId_distrito());%>");
 			$("#accidenteTipo").val("<% out.print(acc.getId_tipo_accidente());%>");
-			$("#vehiculoTipo").val("<% out.print(acc.getTipo_vehiculo());%>");
-			$("#sexo").val("<% out.print(acc.getSexo());%>");
+			$("#vehiculoTipo").val("<% out.print(acc.getId_tipo_vehiculo());%>");
+			$("#sexo").val("<% out.print(acc.getId_sexo());%>");
 
 
 
