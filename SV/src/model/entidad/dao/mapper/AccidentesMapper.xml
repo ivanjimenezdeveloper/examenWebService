@@ -130,7 +130,7 @@
 	</insert>
 
 	<update id="updateAccidente" parameterType="Accidente">
-		UPDATE accidentes
+		UPDATE ACCIDENTES
 		SET EXPEDIENTE = #{expediente}, FECHA= #{fecha}, HORA =
 		#{hora}, DIRECCION = #{direccion}, ID_DISTRITO = #{idDistrito}, ID_TIPO_ACCIDENTE =
 		#{idAccidente}, ID_TIPO_VEHICULO = #{id_tipo_vehiculo}, ID_SEXO = #{id_sexo}

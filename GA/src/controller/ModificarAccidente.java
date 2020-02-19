@@ -123,7 +123,7 @@ public class ModificarAccidente extends HttpServlet {
 
 		Accidente a = new Accidente(ab.getId(), distrito, accidente, expediente, direccion, vehiculo, sexo, fecha,
 				horas + ":" + minutos + ":00");
-		//inserta el accidente
+		//Modifica el accidente
 
 		accidentesEjb.updateAccidente(a);
 		//redirige al main

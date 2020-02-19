@@ -310,6 +310,7 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.commit();
 			return 1;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 
 			return 0;
 		} finally {
@@ -331,6 +332,7 @@ public class AccidenteDAO implements AccidentesMapper{
 			sqlSession.commit();
 			return 1;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 
 			return 0;
 		} finally {
