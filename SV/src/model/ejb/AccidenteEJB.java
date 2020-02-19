@@ -114,7 +114,7 @@ public class AccidenteEJB {
 	 * @param distrito distrito que mirar
 	 * @return arraylist de estadisticas
 	 */
-	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
+	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, Integer distrito) {
 		AccidenteDAO a = new AccidenteDAO();
 
 		return a.getEstadisticasSexo(inicio, fin, distrito);

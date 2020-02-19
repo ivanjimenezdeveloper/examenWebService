@@ -24,7 +24,7 @@ public interface AccidentesMapper {
 	public ArrayList<Estadisticas> getEstadisticas(@Param("inicio") String inicio, @Param("fin") String fin);
 
 	public ArrayList<Estadisticas> getEstadisticasSexo(@Param("inicio") String inicio, @Param("fin") String fin,
-			@Param("distrito") String distrito);
+			@Param("distrito") Integer distrito);
 
 	public ArrayList<Accidente> busquedaAccidente(@Param("tipo") String tipo, @Param("fecha") String fecha);
 

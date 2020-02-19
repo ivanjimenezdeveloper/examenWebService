@@ -77,7 +77,7 @@
 		AND ID_TIPO_ACCIDENTE = TIPOS_ACCIDENTE.ID
 		AND ACCIDENTES.FECHA &lt;=
 		#{fin} AND ACCIDENTES.FECHA &gt;= #{inicio}
-		and DISTRITOS.NOMBRE
+		and DISTRITOS.ID
 		= #{distrito}
 		group by DISTRITOS.NOMBRE,
 		TIPOS_ACCIDENTE.NOMBRE, sexo, vehiculo

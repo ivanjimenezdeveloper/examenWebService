@@ -244,7 +244,7 @@ public class AccidenteDAO implements AccidentesMapper{
 	 * @return arraylist de estadisticas
 	 */
 	@Override
-	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
+	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, Integer distrito) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
 			AccidentesMapper accidenteMapper = sqlSession.getMapper(AccidentesMapper.class);

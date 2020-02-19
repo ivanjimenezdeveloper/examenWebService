@@ -42,7 +42,7 @@
 					if (arrJ != null | !arrJ.isEmpty()) {
 						for (Distritos j : arrJ) {
 
-							out.print("<option>"+j.getNombre()+"</option>");
+							out.print("<option value='"+j.getId()+"'>"+j.getNombre()+"</option>");
 						}
 					}
 				%>

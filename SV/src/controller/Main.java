@@ -67,13 +67,17 @@ public class Main extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType(CONTENT_TYPE);
-
+		Integer distrito = 0;
 		//Recupera los datos del formulario
 		HttpSession sesion = request.getSession(true);
 		String eleccion = (String) sesion.getAttribute("eleccion");
 		String fin = request.getParameter("fin");
 		String inicio = request.getParameter("inicio");
-		String distrito = request.getParameter("distrito");
+		try {
+			 distrito = Integer.parseInt(request.getParameter("distrito"));
+
+		} catch (Exception e) {
+		}
 
 		//recupera los datos segun la eleccion y redirige a mostrar las estadisticas
 		if (eleccion.equals("df")) {
