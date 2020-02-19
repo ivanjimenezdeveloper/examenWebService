@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -75,9 +76,10 @@ public class Rest {
 	public ArrayList<Accidente> busquedaGeneralAccidentes(@PathParam("token") String token) {
 		ArrayList<Accidente> a = new ArrayList<Accidente>();
 		if (token.equals(TOKEN)) {
-		a = accidenteEJB.busquedaGeneral();
+			a = accidenteEJB.busquedaGeneral();
 
-		return a;}
+			return a;
+		}
 		return a;
 
 	}
@@ -93,9 +95,11 @@ public class Rest {
 	public ArrayList<Distritos> busquedaGeneralDistritos(@PathParam("token") String token) {
 		ArrayList<Distritos> a = new ArrayList<Distritos>();
 		if (token.equals(TOKEN)) {
-		a = accidenteEJB.busquedaGeneralDistritos();
+			a = accidenteEJB.busquedaGeneralDistritos();
 
-		return a;}return a;
+			return a;
+		}
+		return a;
 
 	}
 
@@ -110,9 +114,11 @@ public class Rest {
 	public ArrayList<Sexo> getSexos(@PathParam("token") String token) {
 		ArrayList<Sexo> a = new ArrayList<Sexo>();
 		if (token.equals(TOKEN)) {
-		a = accidenteEJB.getSexos();
+			a = accidenteEJB.getSexos();
 
-		return a;}return a;
+			return a;
+		}
+		return a;
 
 	}
 
@@ -127,9 +133,11 @@ public class Rest {
 	public ArrayList<Tipos> busquedaGeneralTipos(@PathParam("token") String token) {
 		ArrayList<Tipos> a = new ArrayList<Tipos>();
 		if (token.equals(TOKEN)) {
-		a = accidenteEJB.busquedaGeneralTipos();
+			a = accidenteEJB.busquedaGeneralTipos();
 
-		return a;}return a;
+			return a;
+		}
+		return a;
 	}
 
 	/**
@@ -143,9 +151,11 @@ public class Rest {
 	public ArrayList<Vehiculo> getVehiculos(@PathParam("token") String token) {
 		ArrayList<Vehiculo> a = new ArrayList<Vehiculo>();
 		if (token.equals(TOKEN)) {
-		a = accidenteEJB.getVehiculos();
+			a = accidenteEJB.getVehiculos();
 
-		return a;}return a;
+			return a;
+		}
+		return a;
 
 	}
 
@@ -168,14 +178,16 @@ public class Rest {
 		// si el usuario es nulo procedera a hacer login
 		if (u == null) {
 			// comprueba que exista el usuario
-			u = accidenteEJB.getUsuario(a.getNombre(), a.getPass());
-
-			if (u.getId() != null) {
-
-				// sesionEJB.loginUsuario(sesion, u);
-
-				return 1;
-			} else {
+			try {
+				Usuario us = accidenteEJB.getUsuario(a.getNombre(), a.getPass());
+				
+				if(us != null) {
+					return 1;
+	
+				}else {
+					return 0;
+				}
+			} catch (Exception e) {
 				return 0;
 			}
 
@@ -197,7 +209,9 @@ public class Rest {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Integer insertAccidente(Accidente a, @PathParam("token") String token) {
 		if (token.equals(TOKEN)) {
-		return accidenteEJB.insertAccidente(a);} return 0;
+			return accidenteEJB.insertAccidente(a);
+		}
+		return 0;
 	}
 
 	/**
@@ -212,7 +226,17 @@ public class Rest {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Integer updateAccidente(Accidente a, @PathParam("token") String token) {
 		if (token.equals(TOKEN)) {
-		return accidenteEJB.updateAccidente(a);}return 0;
+			return accidenteEJB.updateAccidente(a);
+		}
+		return 0;
+	}
+
+	@DELETE
+	@Path("/deleteAccidente/{id}/{token}")
+	public void deleteAccidente(@PathParam("id") Integer id, @PathParam("token") String token) {
+		if (token.equals(TOKEN)) {
+			accidenteEJB.deleteAccidente(id);
+		}
 	}
 
 }

@@ -59,10 +59,13 @@ public class Main extends HttpServlet {
 		
 		if(loged == 1) {
 			sesionEJB.loginUsuario(sesion, u);
+			RequestDispatcher rs = getServletContext().getRequestDispatcher("/main.jsp");
+			rs.forward(request, response);
+		}else {
+			response.sendRedirect("MainCliente");
 		}
 		
-		RequestDispatcher rs = getServletContext().getRequestDispatcher("/main.jsp");
-		rs.forward(request, response);
+
 	}
 
 }

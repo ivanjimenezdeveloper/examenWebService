@@ -68,8 +68,7 @@
 			$("#distrito").val("<%out.print(acc.getId_distrito());%>");
 			$("#accidenteTipo").val("<%out.print(acc.getId_tipo_accidente());%>");
 			$("#vehiculoTipo").val("<%out.print(acc.getId_tipo_vehiculo());%>");
-			$("#sexo").val("<%out.print(acc.getId_sexo());%>
-			");
+			$("#sexo").val("<%out.print(acc.getId_sexo());%>");
 
 					});
 		</script>

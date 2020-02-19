@@ -196,4 +196,10 @@ public class AccidenteEJB {
 		return ab.updateAccidente(a);
 
 	}
+	
+	public void deleteAccidente(Integer id) {
+		AccidenteDAO ab = new AccidenteDAO();
+
+		 ab.deleteAccidente(id);
+	}
 }

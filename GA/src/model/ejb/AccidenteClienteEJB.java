@@ -166,5 +166,13 @@ public class AccidenteClienteEJB {
 
 		return target1.request().post(Entity.json(a), Integer.class);
 	}
+	
+	public void deleteAccidente(Integer i) {
+		Client cliente = ClientBuilder.newClient();
+
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/deleteAccidente/"+i+"/"+TOKEN);
+
+		 target1.request().delete();
+	}
 
 }
