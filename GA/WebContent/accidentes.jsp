@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="imcDark.css" />
 
 <%
+//recupero la sesion y el atributo de accidentes
 	HttpSession sesionM = request.getSession(true);
 	ArrayList<Accidente> arrJ = (ArrayList) sesionM.getAttribute("accidentes");
 %>
@@ -54,6 +55,7 @@
 			</thead>
 			<tbody>
 				<%
+				//muestro cada accidente es una tabla
 					if (arrJ != null | !arrJ.isEmpty()) {
 						for (Accidente j : arrJ) {
 							out.print("<tr>");

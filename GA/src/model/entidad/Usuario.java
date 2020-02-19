@@ -1,9 +1,15 @@
 package model.entidad;
 
+/**
+ * POJO de usuarios
+ * @author HIBAN
+ *
+ */
 public class Usuario {
 	private Integer id;
 	private String nombre, pass;
 
+	//constructores
 	public Usuario(Integer id, String nombre, String pass) {
 		super();
 		this.id = id;
@@ -15,6 +21,7 @@ public class Usuario {
 		super();
 	}
 
+	//getters y setters
 	public Integer getId() {
 		return id;
 	}

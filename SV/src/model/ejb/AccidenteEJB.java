@@ -54,19 +54,7 @@ public class AccidenteEJB {
 
 	}
 
-	/**
-	 * Busqueda de accidentes despues de la fecha dada
-	 * 
-	 * @param tipo  tipo de accidente
-	 * @param fecha fecha inicial
-	 * @return Arraylist de accidentes
-	 */
-	public ArrayList<Accidente> busquedaAccidenteDespues(String tipo, String fecha) {
-		AccidenteDAO a = new AccidenteDAO();
 
-		return a.busquedaAccidenteDespues(tipo, fecha);
-
-	}
 
 	/**
 	 * Busqueda de tipo por id

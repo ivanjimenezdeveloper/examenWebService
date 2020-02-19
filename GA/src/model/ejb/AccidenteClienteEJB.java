@@ -18,10 +18,21 @@ import model.entidad.Sexo;
 import model.entidad.Tipos;
 import model.entidad.Vehiculo;
 
+/**
+ * EJB que accede al REST
+ * 
+ * @author HIBAN
+ *
+ */
 @Stateless(mappedName = "accidenteejotabe")
 @LocalBean
 public class AccidenteClienteEJB {
 
+	/**
+	 * Busqueda de todos los accidentes
+	 * 
+	 * @return ArrayList con los accidentes
+	 */
 	public ArrayList<Accidente> busquedaGeneral() {
 		Client cliente = ClientBuilder.newClient();
 
@@ -35,32 +46,15 @@ public class AccidenteClienteEJB {
 
 	}
 
-//
-//	public ArrayList<Accidente> busquedaAccidente(String tipo, String fecha) {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.busquedaAccidente(tipo, fecha);
-//
-//	}
-//
-//	public ArrayList<Accidente> busquedaAccidenteDespues(String tipo, String fecha) {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.busquedaAccidenteDespues(tipo, fecha);
-//
-//	}
-//
-//	public Tipos TipoPorId(int id) {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.TipoPorId(id);
-//
-//	}
-//
+	/**
+	 * Recupera un accidente segun su id
+	 * @param id id del accidente
+	 * @return
+	 */
 	public Accidente getAccidente(int id) {
 		Client cliente = ClientBuilder.newClient();
 
-		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidente/"+id);
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidente/" + id);
 
 		Accidente a;
 		a = (Accidente) target1.request().get(Accidente.class);
@@ -69,21 +63,12 @@ public class AccidenteClienteEJB {
 
 	}
 
-//
-//	public Distritos distritoPorId(int id) {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.distritoPorId(id);
-//
-//	}
-//
-//	public ArrayList<Estadisticas> getEstadisticas() {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.getEstadisticas();
-//
-//	}
-//
+	/**
+	 * Devuelve todos los tipos de accidentes
+	 * 
+	 * @return ArrayList de tipos de accidentes
+	 */
+
 	public ArrayList<Tipos> getTipos() {
 		Client cliente = ClientBuilder.newClient();
 
@@ -97,6 +82,11 @@ public class AccidenteClienteEJB {
 
 	}
 
+	/**
+	 * Devuelve todos los distritos
+	 * 
+	 * @return ArrayList de Distritos
+	 */
 	public ArrayList<Distritos> busquedaGeneralDistritos() {
 		Client cliente = ClientBuilder.newClient();
 
@@ -109,6 +99,10 @@ public class AccidenteClienteEJB {
 		return a;
 	}
 
+	/**
+	 * Recupera todos los sexos
+	 * @return Arraylist de sexos
+	 */
 	public ArrayList<Sexo> getSexos() {
 		Client cliente = ClientBuilder.newClient();
 
@@ -121,6 +115,10 @@ public class AccidenteClienteEJB {
 		return a;
 	}
 
+	/**
+	 * Recupera todos los vehiculos
+	 * @return Arraylist de vehiculos
+	 */
 	public ArrayList<Vehiculo> getVehiculos() {
 		Client cliente = ClientBuilder.newClient();
 
@@ -133,6 +131,10 @@ public class AccidenteClienteEJB {
 		return a;
 	}
 
+	/**
+	 * Instera un accidente
+	 * @param a accidente a insertar
+	 */
 	public void insertAccidente(Accidente a) {
 		Client cliente = ClientBuilder.newClient();
 
@@ -141,7 +143,11 @@ public class AccidenteClienteEJB {
 		target1.request().post(Entity.json(a));
 
 	}
-	
+
+	/**
+	 * Actualiza un accidente
+	 * @param a accidente a actualizar
+	 */
 	public void updateAccidente(Accidente a) {
 		Client cliente = ClientBuilder.newClient();
 
@@ -150,10 +156,5 @@ public class AccidenteClienteEJB {
 		target1.request().post(Entity.json(a));
 
 	}
-//
-//	public ArrayList<Tipos> busquedaGeneralTipos() {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.busquedaGeneralTipos();
-//	}
+
 }

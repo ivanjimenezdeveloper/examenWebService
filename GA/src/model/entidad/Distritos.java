@@ -2,10 +2,16 @@ package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * POJO de distritos
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Distritos {
 	private int id;
 	private String nombre;
+	//Constructores
 	public Distritos(int id, String nombre) {
 		super();
 		this.id = id;
@@ -14,6 +20,7 @@ public class Distritos {
 	public Distritos() {
 		super();
 	}
+	//Getters y Setters
 	public int getId() {
 		return id;
 	}

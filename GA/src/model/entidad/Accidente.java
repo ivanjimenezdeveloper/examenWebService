@@ -1,12 +1,18 @@
 package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
+/**
+ * POJO de la tabla accidentes
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Accidente {
 	private Integer id, id_distrito, id_tipo_accidente, id_tipo_vehiculo, id_sexo;
 	private String expediente, direccion ;
 	private String fecha, hora;
 
+	//Constructores
 	public Accidente(Integer id, Integer id_distrito, Integer id_tipo_accidente, String expediente, String direccion,
 			Integer id_tipo_vehiculo,Integer id_sexo, String fecha, String hora) {
 		super();
@@ -27,6 +33,7 @@ public class Accidente {
 	}
 
 
+	//Getters y setters
 	public Integer getId() {
 		return id;
 	}

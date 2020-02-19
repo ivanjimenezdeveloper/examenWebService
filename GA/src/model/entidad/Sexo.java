@@ -2,17 +2,18 @@ package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * POJO de sexo
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Sexo {
 	
 	private int id;
 	private String nombre;
 	
-	/**
-	 * Constructor de tipos
-	 * @param id id del tipo
-	 * @param nombre nombre del tipo
-	 */
+	//constructores
 	public Sexo(int id, String nombre) {
 		super();
 		this.id = id;
@@ -21,6 +22,8 @@ public class Sexo {
 	public Sexo() {
 		super();
 	}
+	
+	//getters y setters
 	public int getId() {
 		return id;
 	}

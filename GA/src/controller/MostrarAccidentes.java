@@ -16,7 +16,9 @@ import model.ejb.AccidenteClienteEJB;
 import model.entidad.Accidente;
 
 /**
- * Servlet implementation class MostrarAccidentes
+ * Servlet que muestra todos los accidentes
+ * @author HIBAN
+ *
  */
 @WebServlet("/MostrarAccidentes")
 public class MostrarAccidentes extends HttpServlet {
@@ -27,28 +29,21 @@ public class MostrarAccidentes extends HttpServlet {
 	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * Recoge todos los accidentes y redirige al JSP
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType(CONTENT_TYPE);
 
 		HttpSession sesion = request.getSession(true);
+		//recoge los accidentes y los guarda en la sesion
 		ArrayList<Accidente> arr = accidentesEjb.busquedaGeneral();
 		sesion.setAttribute("accidentes",arr );
+		//redirige
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/accidentes.jsp");
 		rs.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+
 
 }
