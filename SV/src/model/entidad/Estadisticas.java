@@ -2,19 +2,17 @@ package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * POJO de estadisticas
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Estadisticas {
 	private String distrito, tipo, vehiculo, sexo;
 	private Integer cantidad;
 
-	/**
-	 * 
-	 * @param distrito nombre del distrito
-	 * @param tipo     Nombre de tipo
-	 * @param cantidad Cantidad de accidentes
-	 * @param vehiculo
-	 * @param sexo
-	 */
+	//constructores
 	public Estadisticas(String distrito, String tipo, String vehiculo, String sexo, Integer cantidad) {
 		super();
 		this.distrito = distrito;
@@ -24,9 +22,7 @@ public class Estadisticas {
 		this.cantidad = cantidad;
 	}
 
-	/**
-	 * Constructor vacio
-	 */
+
 	public Estadisticas() {
 		super();
 	}

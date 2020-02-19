@@ -2,29 +2,25 @@ package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * POJO de distritos
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Distritos {
 	private int id;
 	private String nombre;
-	/**
-	 * Constructor
-	 * @param id id del distrito
-	 * @param nombre nombre del distrito
-	 */
+	//Constructores
 	public Distritos(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
-	/**
-	 * Constructor vacio
-	 */
 	public Distritos() {
 		super();
 	}
-	
-	//Getters y setters
-	
+	//Getters y Setters
 	public int getId() {
 		return id;
 	}

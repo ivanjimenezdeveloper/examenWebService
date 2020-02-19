@@ -2,17 +2,18 @@ package model.entidad;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * POJO de vehiculos
+ * @author HIBAN
+ *
+ */
 @XmlRootElement
 public class Vehiculo {
 	
 	private int id;
 	private String nombre;
 	
-	/**
-	 * Constructor de tipos
-	 * @param id id del tipo
-	 * @param nombre nombre del tipo
-	 */
+	//constructores
 	public Vehiculo(int id, String nombre) {
 		super();
 		this.id = id;
@@ -21,6 +22,7 @@ public class Vehiculo {
 	public Vehiculo() {
 		super();
 	}
+	//getters y setters
 	public int getId() {
 		return id;
 	}

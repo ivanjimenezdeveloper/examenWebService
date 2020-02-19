@@ -197,6 +197,11 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 	
+	/**
+	 * Recupera un usuario por id
+	 * @param id id de usuario
+	 * @return objeto usuario
+	 */
 	public Usuario usuarioPorId(Integer id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -211,6 +216,12 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 	
+	/**
+	 * Recupera el usuario segun su pass y nombre
+	 * @param nombre nombre de usuario
+	 * @param pass pass del usuario
+	 * @return objeto usuario
+	 */
 	public Usuario getUsuario(String nombre, String pass) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -225,6 +236,13 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	/**
+	 * Devuelve estadisticas segun los datos
+	 * @param inicio fecha de inicio
+	 * @param fin fecha fin
+	 * @param distrito distrito que mirar
+	 * @return arraylist de estadisticas
+	 */
 	@Override
 	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, String distrito) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
@@ -240,6 +258,10 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	/**
+	 * Recupera los sexos
+	 * @return arraylist de sexos
+	 */
 	@Override
 	public ArrayList<Sexo> getSexos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
@@ -255,6 +277,10 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	/**
+	 * Recupera los vehiculos
+	 * @return arraylist de vehiculos
+	 */
 	@Override
 	public ArrayList<Vehiculo> getVehiculos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
@@ -270,6 +296,11 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	/**
+	 * Inserta un accidente
+	 * @param a accidente a insertar
+	 * @return 1 o 0 segun si funciona el insert
+	 */
 	@Override
 	public Integer insertAccidente(Accidente a) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
@@ -286,6 +317,11 @@ public class AccidenteDAO implements AccidentesMapper{
 		}
 	}
 
+	/**
+	 * Actualiza un accidente
+	 * @param a accidente a actualizar
+	 * @return 1 o 0 segun si funciona la actualizacion
+	 */
 	@Override
 	public Integer updateAccidente(Accidente a) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
