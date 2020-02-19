@@ -1,5 +1,4 @@
 /controller/
-/jdbc.properties
 /logback.xml
 /model/
 /mybatis-config.xml

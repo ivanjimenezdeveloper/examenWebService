@@ -43,11 +43,11 @@ public class Accidente {
 	}
 	
 	public Integer getIdAccidente() {
-		return id;
+		return id_tipo_accidente;
 	}
 
 	public void setIdAccidente(Integer id) {
-		this.id = id;
+		this.id_tipo_accidente = id;
 	}
 
 	public Integer getId_distrito() {
@@ -68,6 +68,7 @@ public class Accidente {
 		return id_tipo_accidente;
 	}
 
+	
 	public void setId_tipo_accidente(Integer id_tipo_accidente) {
 		this.id_tipo_accidente = id_tipo_accidente;
 	}

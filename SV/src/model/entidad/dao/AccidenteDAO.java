@@ -17,7 +17,7 @@ import model.entidad.Vehiculo;
 import model.entidad.dao.mapper.AccidentesMapper;
 import model.entidad.dao.mapper.UsuarioMapper;
 
-public class AccidenteDAO implements AccidentesMapper {
+public class AccidenteDAO  {
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(AccidenteDAO.class);
 
 	/**
@@ -45,7 +45,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param id id del tipo de accidente
 	 * @return Objeto de tipos
 	 */
-	@Override
 	public Tipos TipoPorId(int id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -66,7 +65,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param id id del accidente
 	 * @return objeto accidente
 	 */
-	@Override
 	public Accidente getAccidente(int id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -87,7 +85,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param id id del distrito
 	 * @return objeto distrito
 	 */
-	@Override
 	public Distritos distritoPorId(int id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -107,7 +104,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * 
 	 * @return Arraylist con todas las estadisticas
 	 */
-	@Override
 	public ArrayList<Estadisticas> getEstadisticas(String inicio, String fin) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -130,7 +126,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * 
 	 * @return ArrayList de Distritos
 	 */
-	@Override
 	public ArrayList<Distritos> busquedaGeneralDistritos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -150,7 +145,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * 
 	 * @return ArrayList de tipos de accidentes
 	 */
-	@Override
 	public ArrayList<Tipos> busquedaGeneralTipos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -214,7 +208,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param distrito distrito que mirar
 	 * @return arraylist de estadisticas
 	 */
-	@Override
 	public ArrayList<Estadisticas> getEstadisticasSexo(String inicio, String fin, Integer distrito) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -234,7 +227,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * 
 	 * @return arraylist de sexos
 	 */
-	@Override
 	public ArrayList<Sexo> getSexos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -254,7 +246,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * 
 	 * @return arraylist de vehiculos
 	 */
-	@Override
 	public ArrayList<Vehiculo> getVehiculos() {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -275,7 +266,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param a accidente a insertar
 	 * @return 1 o 0 segun si funciona el insert
 	 */
-	@Override
 	public Integer insertAccidente(Accidente a) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -298,7 +288,6 @@ public class AccidenteDAO implements AccidentesMapper {
 	 * @param a accidente a actualizar
 	 * @return 1 o 0 segun si funciona la actualizacion
 	 */
-	@Override
 	public Integer updateAccidente(Accidente a) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
@@ -315,7 +304,6 @@ public class AccidenteDAO implements AccidentesMapper {
 		}
 	}
 
-	@Override
 	public void deleteAccidente(Integer id) {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		try {
