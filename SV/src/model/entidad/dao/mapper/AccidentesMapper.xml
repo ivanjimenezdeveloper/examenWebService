@@ -38,7 +38,7 @@
 		SELECT * FROM ACCIDENTES
 	</select>
 
-	<select id="getAccidente" resultMap='AccidenteResult'>
+	<select id="getAccidente" resultType='Accidente'>
 		SELECT * FROM ACCIDENTES
 		WHERE ID = #{id}
 	</select>

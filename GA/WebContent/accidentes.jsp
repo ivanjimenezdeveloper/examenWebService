@@ -59,7 +59,7 @@
 							out.print("<tr>");
 							out.print("<td>" + j.getFecha() + "</td>");
 							out.print("<td>" + j.getHora() + "</td>");
-							out.print("<td>" + j.getExpediente() + "</td>");
+							out.print("<td><a href='ModificarAccidente?id="+j.getId()+"'>" + j.getExpediente() + "</a></td>");
 							out.print("<td>" + j.getId_distrito() + "</td>");
 
 							out.print("</tr>");

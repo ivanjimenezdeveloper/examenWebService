@@ -21,6 +21,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="imcDark.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <%
 	HttpSession sesionM = request.getSession(true);
@@ -28,9 +30,7 @@
 	ArrayList<Distritos> arrD = (ArrayList) sesionM.getAttribute("distritos");
 	ArrayList<Sexo> arrS = (ArrayList) sesionM.getAttribute("sexos");
 	ArrayList<Vehiculo> arrV = (ArrayList) sesionM.getAttribute("vehiculos");
-
-
-
+	Accidente acc = (Accidente) sesionM.getAttribute("accidente");
 %>
 
 
@@ -48,17 +48,38 @@
 				<li><a href='Main'>HOME</a></li>
 			</ul>
 		</div>
+		<script type="text/javascript">
+		$(document).ready(function () {
+			
+			var hora = '<% out.print(acc.getHora()); %>';
+			
+			var horaArray = hora.split(":");
+			$("#hora").val(horaArray[0]);
+			$("#min").val(horaArray[1]);
+			$("#distrito").val("<% out.print(acc.getId_distrito());%>");
+			$("#accidenteTipo").val("<% out.print(acc.getId_tipo_accidente());%>");
+			$("#vehiculoTipo").val("<% out.print(acc.getTipo_vehiculo());%>");
+			$("#sexo").val("<% out.print(acc.getSexo());%>");
+
+
+
+		});
+		</script>
 	</div>
 	<div class="container">
 
-		<form action="CrearAccidentes" method="post">
-			<label>Expediente</label> <input type="text" name="expediente" required="required">
-			<label>Fecha</label> <input type="date" name="fecha" required="required"> <label>Hora</label>
-			<input type="number" name="hora" max="23" min="0" required="required"> <label>Minuto</label> <input
-				type="number" name="minuto" max="59" min="0" required="required"> <label>Direccion</label> <input
-				type="text" name="direccion" required="required"> 
-				<label>Distrito</label>
-				 <select name="distrito" required="required">
+		<form action="ModificarAccidente" method="post">
+			<label>Expediente</label> 
+			<input type="text" name="expediente" value="<%out.print(acc.getExpediente()); %>"
+				required="required" id="expediente"> 
+				<label>Fecha</label>
+<input type="date" name="fecha" required="required"
+				value="<%out.print(acc.getFecha());%>"> <label>Hora</label>
+			<input type="number" name="hora" id="hora" max="23" min="0" required="required">
+			<label>Minuto</label> <input type="number" name="minuto" id="min" max="59"
+				min="0" required="required"> <label>Direccion</label> <input
+				type="text" name="direccion" value="<%out.print( acc.getDireccion()); %>" required="required"> <label>Distrito</label>
+			<select name="distrito" id="distrito" required="required">
 				<%
 					if (arrD != null | !arrD.isEmpty()) {
 						for (Distritos j : arrD) {
@@ -67,8 +88,8 @@
 						}
 					}
 				%>
-				 </select> <label>Tipo Accidente</label> <select
-				name="accidenteTipo" required="required">
+			</select> <label>Tipo Accidente</label> <select name="accidenteTipo"
+				required="required" id="accidenteTipo">
 				<%
 					if (arrJ != null | !arrJ.isEmpty()) {
 						for (Tipos j : arrJ) {
@@ -77,10 +98,9 @@
 						}
 					}
 				%>
-			</select> 
-			<label>Tipo Vehiculo</label> 
-			<select name="vehiculoTipo" required="required">
-										<%
+			</select> <label>Tipo Vehiculo</label> <select id="vehiculoTipo" name="vehiculoTipo"
+				required="required">
+				<%
 					if (arrV != null | !arrV.isEmpty()) {
 						for (Vehiculo j : arrV) {
 							out.print("<option value='" + j.getId() + "'>" + j.getNombre() + "</option>");
@@ -88,10 +108,8 @@
 						}
 					}
 				%>
-			</select> 
-			<label>Sexo</label>
-			<select name="sexo" required="required">
-							<%
+			</select> <label>Sexo</label> <select name="sexo" id="sexo" required="required">
+				<%
 					if (arrS != null | !arrS.isEmpty()) {
 						for (Sexo j : arrS) {
 							out.print("<option value='" + j.getId() + "'>" + j.getNombre() + "</option>");

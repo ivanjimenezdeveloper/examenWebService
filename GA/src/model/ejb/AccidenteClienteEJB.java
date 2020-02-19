@@ -57,12 +57,18 @@ public class AccidenteClienteEJB {
 //
 //	}
 //
-//	public Accidente getAccidente(int id) {
-//		AccidenteDAO a = new AccidenteDAO();
-//
-//		return a.getAccidente(id);
-//
-//	}
+	public Accidente getAccidente(int id) {
+		Client cliente = ClientBuilder.newClient();
+
+		WebTarget target1 = cliente.target("http://localhost:8080/SV/Accidente/getAccidente/"+id);
+
+		Accidente a;
+		a = (Accidente) target1.request().get(Accidente.class);
+
+		return a;
+
+	}
+
 //
 //	public Distritos distritoPorId(int id) {
 //		AccidenteDAO a = new AccidenteDAO();

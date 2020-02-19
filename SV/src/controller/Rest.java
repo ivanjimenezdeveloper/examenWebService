@@ -105,16 +105,6 @@ public class Rest {
 
 	}
 
-	@POST
-	@Path("/insertarAccidente/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Integer insertarAccidente() {
-		ArrayList<Vehiculo> a = new ArrayList<Vehiculo>();
-
-		a = accidenteEJB.getVehiculos();
-		return 0;
-
-	}
 
 	@POST
 	@Path("/logearUsuario/")
@@ -153,5 +143,7 @@ public class Rest {
 		
 		return accidenteEJB.insertAccidente(a);
 	}
+	
+
 
 }

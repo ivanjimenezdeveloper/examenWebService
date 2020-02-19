@@ -3,20 +3,20 @@ package model.entidad;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Accidente {
-	private Integer id, id_distrito, id_tipo_accidente;
-	private String expediente, direccion, tipo_vehiculo, sexo;
+	private Integer id, id_distrito, id_tipo_accidente, id_tipo_vehiculo, id_sexo;
+	private String expediente, direccion ;
 	private String fecha, hora;
 
 	public Accidente(Integer id, Integer id_distrito, Integer id_tipo_accidente, String expediente, String direccion,
-			String tipo_vehiculo,String sexo, String fecha, String hora) {
+			Integer id_tipo_vehiculo,Integer id_sexo, String fecha, String hora) {
 		super();
 		this.id = id;
 		this.id_distrito = id_distrito;
 		this.id_tipo_accidente = id_tipo_accidente;
 		this.expediente = expediente;
 		this.direccion = direccion;
-		this.tipo_vehiculo = tipo_vehiculo;
-		this.sexo = sexo;
+		this.id_tipo_vehiculo = id_tipo_vehiculo;
+		this.id_sexo = id_sexo;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
@@ -43,13 +43,13 @@ public class Accidente {
 		this.id = id;
 	}
 
-	public Integer getId_distrito() {
-		return id_distrito;
-	}
-
-	public void setId_distrito(Integer id_distrito) {
-		this.id_distrito = id_distrito;
-	}
+//	public Integer getId_distrito() {
+//		return id_distrito;
+//	}
+//
+//	public void setId_distrito(Integer id_distrito) {
+//		this.id_distrito = id_distrito;
+//	}
 	public Integer getIdDistrito() {
 		return id_distrito;
 	}
@@ -81,37 +81,8 @@ public class Accidente {
 		this.direccion = direccion;
 	}
 
-	public String getTipo_vehiculo() {
-		return tipo_vehiculo;
-	}
 
-	public void setIdVehiculo(String tipo_vehiculo) {
-		this.tipo_vehiculo = tipo_vehiculo;
-	}
-	
-	public String getIdVehiculo() {
-		return tipo_vehiculo;
-	}
 
-	public void setTipo_vehiculo(String tipo_vehiculo) {
-		this.tipo_vehiculo = tipo_vehiculo;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	
-	public String getIdSexo() {
-		return sexo;
-	}
-
-	public void setIdSexo(String sexo) {
-		this.sexo = sexo;
-	}
 
 
 	public String getFecha() {
@@ -128,6 +99,26 @@ public class Accidente {
 
 	public void setHora(String hora) {
 		this.hora = hora;
+	}
+
+
+	public Integer getId_tipo_vehiculo() {
+		return id_tipo_vehiculo;
+	}
+
+
+	public void setId_tipo_vehiculo(Integer id_tipo_vehiculo) {
+		this.id_tipo_vehiculo = id_tipo_vehiculo;
+	}
+
+
+	public Integer getId_sexo() {
+		return id_sexo;
+	}
+
+
+	public void setId_sexo(Integer id_sexo) {
+		this.id_sexo = id_sexo;
 	}
 	
 	
